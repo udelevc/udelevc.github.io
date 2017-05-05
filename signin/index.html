@@ -1,0 +1,263 @@
+<!DOCTYPE html public>
+<html>
+<head>
+    <title>Blue Hen Racing</title>
+    <meta name="description" content="Blue Hen Racing - Formula SAE at the University of Delaware">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <!-- Most Recent Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!-- Most Recent Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400|Source+Sans+Pro:200,300,400,600,700|Oswald:400,300,700|Economica:400,700,400italic|Ubuntu:300,400,500,700,300italic,400italic|Titillium+Web:200,300,600,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Most Recent JQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- Most Recent Bootsrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <!-- Easing plugin for JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Validator plugin for JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+    <!-- Fade plugin for JQuery -->
+    <script src="../js/jquery.fadethis.js"></script>
+    <!-- Firebase Setup -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-database.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "",
+        authDomain: "",
+        databaseURL: "",
+        storageBucket: "",
+        messagingSenderId: ""
+      };
+      firebase.initializeApp(config);
+    </script>
+    <!-- Custom JS -->
+    <script src="../js/main.js"></script>
+    <script src="../js/firebaseSignin.js"></script>
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".nav-list">
+    <!-- Begin Navbar -->
+    <div class="navbar navbar-default navbar-fixed-top nav-list">
+       <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+           <a class="navbar-brand page-scroll nav-a-nop" href="../"><p id="head-hold"><img style="float: left; height: 60px;" class="header-img" id="head-img" data-page="1" src="../img/udelLogo.png"><span id="head-tit">Blue Hen Racing</span></p></a>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- End Navbar -->
+
+    <!-- Begin Page Content -->
+    <div class="cd-container">
+        <!-- Intro Content -->
+        <div class="intro" id="page-top">
+            <div class="back-box">
+            <div class="form-box">
+                <div class="row faq-box">
+                    <div id = "alert_placeholder"></div>
+                    <div class="col-md-6" id="left-sign">
+                        <div class="form-holder" id="logindiv">
+                            <h2 class="text-center" style="font-size: 1.8em;">Sign in to Blue Hen Racing</h2>
+                            <br>
+                            <form id="loginform" name="loginform" data-toggle="validator" data-focus="false" method="post">
+                               <div class="form-group row has-feedback">
+                                    <label for="email3" class="col-md-2 text-right">Email</label>
+                                    <div class="col-md-10">
+                                        <input type="email" class="form-control textarea-drk" id="email3" name="email3" placeholder="Your Email Address" data-minlength="5" maxlength="100" data-error="Please enter a valid email address" required>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        <div class="help-block with-errors text-left"></div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label for="pass1" class="col-md-2 text-right">Password</label>
+                                    <div class="col-md-10">
+                                        <input type="password" class="form-control textarea-drk" id="pass1" name="pass1" placeholder="Your Password" maxlength="100" required>
+                                        <div class="help-block with-errors text-left"></div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-offset-9 col-md-3">
+                                        <button type="submit" class="btn-block btn-lg" id="loginbtn">Log In</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-md-offset-6 col-md-6">
+                                    <button class="btn-block btn-lg" style="letter-spacing: normal !important;" id="forgotbtn">Forgot Your Password?</button>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                        <div id="forgotform" style="display: none;">
+                            <h2 class="text-center" style="font-size: 1.8em;">Recover Password</h2>
+                            <br>
+                            <form id="forgotemail" name="forgotemail" data-toggle="validator" data-focus="false" method="post">
+                               <div class="form-group row has-feedback">
+                                    <label for="email4" class="col-md-2 text-right">Email</label>
+                                    <div class="col-md-10">
+                                        <input type="email" class="form-control textarea-drk" id="email4" name="email4" placeholder="Your Email Address" data-minlength="5" maxlength="100" data-error="Please enter a valid email address" required>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        <div class="help-block with-errors text-left"></div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-offset-9 col-md-1">
+                                        <button type="submit" class="btn-block btn-sm" id="forgotbtn">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="border-left: 2px solid #0C99E4;" id="right-sign">
+                        <div class="form-holder">
+                            <h2 class="text-center" style="font-size: 1.8em;">Register for Blue Hen Racing</h2>
+                            <br>
+                            <form id="regform" name="regform" data-toggle="validator" data-focus="false" method="post">
+                                <div class="form-group row has-feedback">
+                                    <label for="fname" class="col-md-2 text-right">First Name</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control textarea-drk" id="fname" name="fname" placeholder="First Name" data-minlength="5" maxlength="100" data-error="Please enter a valid name" required>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        <div class="help-block with-errors text-left"></div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row has-feedback">
+                                    <label for="lname" class="col-md-2 text-right">Last Name</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control textarea-drk" id="lname" name="lname" placeholder="First Name" data-minlength="5" maxlength="100" data-error="Please enter a valid name" required>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        <div class="help-block with-errors text-left"></div>
+                                    </div>
+                                </div>
+                                <br>
+                               <div class="form-group row has-feedback">
+                                    <label for="email" class="col-md-2 text-right">Email</label>
+                                    <div class="col-md-10">
+                                        <input type="email" class="form-control textarea-drk" id="email" name="email" placeholder="Email Address" data-minlength="5" maxlength="100" data-error="Please enter a valid email address" required>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        <div class="help-block with-errors text-left"></div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row has-feedback">
+                                    <label for="pass2" class="col-md-2 text-right">Password</label>
+                                    <div class="col-md-10">
+                                        <input type="password" class="form-control textarea-drk" id="pass2" name="pass2" placeholder="Your Password" pattern="(?=.*[a-z]).{1,}" data-minlength="8" maxlength="32" data-pattern-error="Password must contain letters" data-error="Password must be 8-32 characters" required>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        <div class="help-block with-errors text-left"></div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row has-feedback">
+                                    <label for="pass3" class="col-md-2 text-right">Confirm</label>
+                                    <div class="col-md-10">
+                                        <input type="password" class="form-control textarea-drk" id="pass3" name="pass3" placeholder="Confirm Your Password" data-minlength="8" maxlength="32" data-match="#pass2" data-match-error="Passwords don't match" required>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        <div class="help-block with-errors text-left"></div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-md-offset-9 col-md-3">
+                                        <button type="submit" class="btn-block btn-lg" id="regbtn">Register</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Footer -->
+        <div class="foot" id="contact">
+            <br>
+            <div class="row" id="social">
+                <div class="col-md-offset-4 col-md-1">
+                    <center>
+                        <a href="https://www.facebook.com/realrandomllc/" target="_blank">
+                            <div class="btn-facebook"><i class="fa fa-2x fa-facebook"></i></div>
+                        </a>
+                    </center>
+                </div>
+                <div class="col-md-1">
+                    <center>
+                        <a href="https://twitter.com/realrandomrolls" target="_blank">
+                            <div class="btn-twitter"><i class="fa fa-2x fa-twitter"></i></div>
+                        </a>
+                    </center>
+                </div>
+                <div class="col-md-1">
+                    <center>
+                        <a href="https://www.linkedin.com/company/real-random-llc" target="_blank">
+                            <div class="btn-insta"><i class="fa fa-2x fa-instagram"></i></div>
+                        </a>
+                    </center>
+                </div>
+                <div class="col-md-1">
+                    <center>
+                        <a href="mailto:info@realrandom.co">
+                            <div class="btn-linked"><i class="fa fa-2x fa-envelope"></i></div>
+                        </a>
+                    </center>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-1 col-md-3" style="margin-top: -7px;">
+                    <p style="font-size: 1.2em;" class="team-ti">ADDRESS:</p>
+                    <p style="font-size: 1.2em;" class="team-ti">Spencer Laboratory
+                    <br>130 Academy St
+                    <br>Newark, DE 19716</p>
+                </div>
+                <div class="col-md-4 text-center" style="padding-top: 50px;">
+                    <div class="line"></div>
+                    <br>
+                    <p class="text-center" id="foot-date2"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Content -->
+    <!-- Back To Top Button -->
+    <a href="#0" class="cd-top btn-block">Top</a>
+    <script>
+        $(document).ready(function() {
+            $(window).fadeThis({
+            baseName:       "slide-",
+            speed:          700,
+            easing:         "swing",
+            offset:         0,
+            reverse:        false,
+            distance:       500,
+            scrolledIn:     null,
+            scrolledOut:    null
+            });
+        });
+    </script>
+</body>
+</html>

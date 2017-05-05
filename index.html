@@ -1,0 +1,305 @@
+<!DOCTYPE html public>
+<html>
+<head>
+    <title>Blue Hen Racing</title>
+    <meta name="description" content="Blue Hen Racing - Formula SAE at the University of Delaware">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1" />
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Most Recent Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!-- Most Recent Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400|Source+Sans+Pro:200,300,400,600,700|Oswald:400,300,700|Economica:400,700,400italic|Ubuntu:300,400,500,700,300italic,400italic|Titillium+Web:200,300,600,400' rel='stylesheet' type='text/css'>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Most Recent JQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- Most Recent Bootsrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <!-- Easing plugin for JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Validator plugin for JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+    <!-- Instagram Plugin -->
+    <script type="text/javascript" src="js/instafeed.min.js"></script>
+    <!-- Fade plugin for JQuery -->
+    <script src="js/jquery.fadethis.js"></script>
+    <!-- Custom JS -->
+    <script type="text/javascript">
+    //Instagram feed
+    var feed = new Instafeed({
+            get: 'user',
+            userId: '3852000463',
+            sortBy: 'most-recent',
+            limit: '8',
+            template: '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3"><div class="photo-box"><div class="image-wrap"><a href="{{link}}" target="_blank"><img src="{{image}}"></a></div></div></div>',
+            resolution: 'standard_resolution',
+            accessToken: '3852000463.0f1192e.eb3545a3ddd244d9afbb37fb2fc331b6'
+        });
+    feed.run();
+    </script>
+    <!-- test -->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".nav-list">
+    <!-- Begin Navbar -->
+    <div class="navbar navbar-default navbar-fixed-top nav-list">
+       <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+           <a class="navbar-brand page-scroll nav-a-nop" href="#page-top"><p id="head-hold"><img style="float: left; height: 55px;" class="header-img" id="head-img" data-page="1" src="img/udelLogo.png"></p></a>
+           <!--
+           <a class="navbar-brand page-scroll nav-a-nop" href="signin/index.html"><p id="head-hold"><img style="float: left; height: 55px;" class="header-img" id="head-img" data-page="1" src="img/udelLogo.png"><span id="head-tit">Members - </span> <span id="sign-in-nav">Sign In</span></p></a>
+            -->
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li><a class="nav-a page-scroll" href="#bio">About Us</a>
+                </li>
+                <li><a class="nav-a page-scroll" href="#news">Photos</a>
+                </li>
+                <li><a class="nav-a page-scroll" href="#sponsors">Sponsors</a>
+                </li>
+                <li><a class="nav-a page-scroll" href="#team">Officers</a>
+                </li>
+                <li><a class="nav-a page-scroll" href="#contact">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- End Navbar -->
+
+    <!-- Begin Page Content -->
+    <div class="cd-container">
+        <!-- Intro Content -->
+        <div class="intro" id="page-top">
+            <div class="header-content text-center">
+                <div class="back-box row">
+                    <div class="col-lg-offset-2 col-lg-8">
+                        <p id="name"><i>Blue Hen Racing</i></p>
+                        <h3 id="labl">Formula SAE</h3>
+                    </div>
+                </div>
+                     <div class="back-box row" style="padding:0px 0px 30px 0px;">
+                         <div class="col-lg-offset-1 col-lg-10">
+                            <div class="col-md-4" style="padding-bottom:30px;">
+                                <img class="back-box-img" src="img/seat_dark.jpg">
+                             </div>
+                             <div class="col-md-4" style="padding-bottom:30px;">
+                                 <img class="back-box-img" src="img/car_dark.jpg">
+                             </div>
+                             <div class="col-md-4" style="padding-bottom:30px;">
+                                 <img class="back-box-img" src="img/exhaust_dark.jpeg">
+                             </div>
+                         </div>
+                         <div class="col-lg-12">
+                             <center id="more">
+                                <a class="btn-block page-scroll" href="#bio" id="learnbtn"><span style="color:#fff !important; font-family: 'Titillium Web', 'Economica', 'Lato', Helvetiva, Arial, sans-serif; text-transform: none;">Explore</span>&nbsp;&nbsp;<i class="fa fa-chevron-down"></i></a>
+                            </center>
+                        </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bio Content -->
+        <section id="bio" class="container content-section inverse-section text-center" style="position: relative; padding-top: 55px;">
+            <h2 class="text-center">About Us</h2>
+            <div class="row" style="padding: 0px 50px 0px 50px;">
+                <br><br>
+                <div class="col-md-12">
+                    <h4 class="text-left">The goal of Formula SAE is to take the Engineering curriculum and apply it to a real-world industrial problem by building a prototype race car for a fictional single entry series. Student’s cars are not only judged based on their performance, but also the Engineering decisions the students have made in their design, weighing performance versus cost and reliability. Formula SAE challenges students to design a car that is quick, reliable, fuel efficient, and cost effective.</h4>
+                    <br>
+                    <h4 class="text-left">Formula SAE was established at the University of Delaware in 1996. The Department of Mechanical Engineering gave the team a home in Spencer Lab, where the team could realize its dream of designing, fabricating, and racing a car of their own design. The rest is history: The team has competed in over 10 Formula SAE competitions and dozens of local autocrosses sanctioned by the SCCA. In 2010, the Senior Design capstone project added FSAE, integrating Formula SAE into the Mechanical Engineering curriculum. Since then, University of Delaware has completed every competition event they have entered, a feat only 20% of teams can regularly claim.
+                    </h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Content -->
+        <section id="news" class="container content-section trans-section text-center" style="position: relative;padding-top: 55px;">
+            <h2 class="text-center">Photos</h2>
+            <br><br>
+            <div class="row text-center" style="padding: 0px 30px 0px 30px;">
+                <center>
+                   <div class="instagram-content">
+                    <div class="row photos-wrap">
+                    <!-- Instafeed target div -->
+                    <div id="instafeed"></div>
+                    </div>
+                    </div>
+                </center>
+            </div>
+        </section>
+        
+         <!-- Sponsor Content -->
+        <section id="sponsors" class="container content-section inverse-section text-center" style="position: relative; padding-top: 55px;">
+            <h2 class="text-center">Sponsorships</h2><br>
+            <div class="row" style="padding: 0px 30px 0px 30px;">
+                <div class="col-md-3 sponsor-img" style="padding-bottom:15px;">
+                    <img src="img/dassault.jpg" height="100px">
+                </div>
+                <div class="col-md-3 sponsor-img" style="padding-bottom:15px;">
+                    <img src="img/guhl.jpg" height="100px">
+                </div>
+                <div class="col-md-3 sponsor-img" style="padding-bottom:15px;">
+                    <img src="img/lincoln.jpg" height="100px">
+                </div>
+                <div class="col-md-3 sponsor-img" style="padding-bottom:15px;">
+                    <img src="img/dow.jpg" height="100px">
+                </div>
+            </div>
+            <div class="row" style="padding: 0px 50px 0px 50px;">
+                <br>
+                <div class="col-md-12">
+                    <h4 class="text-left">The University of Delaware Formula SAE team relies on sponsors to fund the manufacturing of the car from year to year. With limited resources and the desire to make the car even better than the last, we have to balance the manufacturing of the car and financial planning. Each year we complete the manufacturing of the car on time. As we begin the year we are excited for this year’s car, the support of our new sponsors, and continued support from past sponsors. This year’s team has much excitement and enthusiasm to make this year the best one yet.</h4>
+                    <br>
+                    <h4 class="text-left">Listed below are our different sponsorship levels. If you have any questions, please contact the team at <a href="mailto:bluehenracing@gmail.com">bluehenracing&#8203;@&#8203;gmail.com</a>
+                    </h4>
+                    <br>
+                </div>
+            </div>
+            <div class=row style="padding: 0px 50px 0px 50px;">
+                <div class="col-md-12">
+                    <table class="table" style="font-size: 1.3em;">
+                        <thead>
+                            <th>Tier</th>
+                            <th>Amount</th>
+                            <th>Rewards</th>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Associate</td>
+                            <td>$20 - $199</td>
+                            <td>Team Hat and Team Picture</td>
+                          </tr>
+                          <tr>
+                            <td>Bronze</td>
+                            <td>$200 - $499</td>
+                            <td>Associate plus your company Logo on our website, 2 team shirts, and 1 extra team hat</td>
+                          </tr>
+                          <tr>
+                            <td>Silver</td>
+                            <td>$500 - $999</td>
+                            <td>Bronze plus a small decal on the car, 3 more team hats and 1 more team shirt</td>
+                          </tr>
+                          <tr>
+                            <td>Gold</td>
+                            <td>$1000 - $5,000</td>
+                            <td>Silver plus a team appearance at a company event for marketing, and 2 more team shirts</td>
+                          </tr>
+                          <tr>
+                            <td>Platinum</td>
+                            <td>$5,000 +</td>
+                            <td>Gold plus a team and car appearance at a company event, and 5 more team hats</td>
+                          </tr>
+                        </tbody>
+                  </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Content -->
+        <section id="team" class="container content-section trans-section text-center" style="padding-top: 55px;">
+            <h2 class="text-center">Officers</h2>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-wrap">
+                        <center><div class="circ-img" style="background: url(img/person.png) no-repeat center center; background-size: 100% 100%;"></div></center>
+                        <h4 class="text-center">Tyler Gravatt</h4>
+                        <h5 class="team-ti">President</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-wrap">
+                        <center><div class="circ-img" style="background: url(img/person.png) no-repeat center center; background-size: 100% 100%;"></div></center>
+                        <h4 class="text-center">Ryan Tocker</h4>
+                        <h5 class="team-ti">Vice President</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <center><div class="circ-img" style="background: url(img/person.png) no-repeat center center; background-size: 100% 100%;"></div></center>
+                    <h4 class="text-center">Fletcher Comrie</h4>
+                    <h5 class="team-ti">Treasurer</h5>
+                </div>
+            </div>
+            <br>
+            <br>
+        </section>
+
+        <!-- Footer -->
+        <div class="foot" id="contact">
+            <br>
+            <div class="row" id="social">
+                <div class="col-md-offset-4 col-md-1">
+                    <center>
+                        <a href="https://www.facebook.com/BlueHenRacing/" target="_blank">
+                            <div class="btn-facebook"><i class="fa fa-2x fa-facebook"></i></div>
+                        </a>
+                    </center>
+                </div>
+                <div class="col-md-1">
+                    <center>
+                        <a href="https://twitter.com/ud_racing?lang=en" target="_blank">
+                            <div class="btn-twitter"><i class="fa fa-2x fa-twitter"></i></div>
+                        </a>
+                    </center>
+                </div>
+                <div class="col-md-1" style="padding-bottom:15px;">
+                    <center>
+                        <a href="https://www.instagram.com/ud_fsae/" target="_blank">
+                            <div class="btn-insta"><i class="fa fa-2x fa-instagram"></i></div>
+                        </a>
+                    </center>
+                </div>
+                <div class="col-md-1" style="padding-bottom:15px;">
+                    <center>
+                        <a href="mailto:bluehenracing@gmail.com">
+                            <div class="btn-linked"><i class="fa fa-2x fa-envelope"></i></div>
+                        </a>
+                    </center>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-1 col-md-3" style="margin-top: -7px;">
+                    <p style="font-size: 1.2em;" class="team-ti">ADDRESS:</p>
+                    <p style="font-size: 1.2em;" class="team-ti">Spencer Laboratory
+                    <br>130 Academy St
+                    <br>Newark, DE 19716</p>
+                </div>
+                <div class="col-md-4 text-center" style="padding-top: 50px;">
+                    <div class="line"></div>
+                    <br>
+                    <p class="text-center" id="foot-date2"></p>
+                </div>
+            </div>
+        </div>
+    <!-- End Page Content -->
+    <!-- Back To Top Button -->
+    <a href="#0" class="cd-top btn-block">Top</a>
+    <script>
+        $(document).ready(function() {
+            $(window).fadeThis({
+            baseName:       "slide-",
+            speed:          700,
+            easing:         "swing",
+            offset:         0,
+            reverse:        false,
+            distance:       500,
+            scrolledIn:     null,
+            scrolledOut:    null
+            });
+        });
+    </script>
+     <script src="js/main.js"></script>
+</body>
+</html>
