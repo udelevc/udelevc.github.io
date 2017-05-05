@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
       if (($('#partsbtn').hasClass('disabled'))) {
       } else {
         var data = getFormData();
-        var url = 'https://script.google.com/macros/s/AKfycbxAvVVeDv7w-XIpcqzp-ck5vAkuyJtGJc-ZFzYuVkElKAxWQn8U/exec'
+        var url = 'https://script.google.com/macros/s/AKfycbxuJaxXfZpkd-wWnKvdeeSp_T-WuPS0u4PWzsWuJaCr3NZcZ-E/exec'
         var xhr = new XMLHttpRequest();
         xhr.open('POST', url);
         // xhr.withCredentials = true;
