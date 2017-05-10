@@ -77,19 +77,21 @@ jQuery(document).ready(function ($) {
             $checkoutpart_num = document.getElementById("checkpart_num").innerHTML;
             $checkoutpart_status = "";
             $checkoutpart_num = $checkoutpart_num.substr(13);
-            console.log($checkoutpart_num);
             var partquant = 0;
             var checkoutpart_consum = "off";
+            var partstatus = "";
             firebase.database().ref('inventory').once('value').then(function(snapshot) {
                 snapshot.forEach(function(childSnapshot) {
                     var childData = childSnapshot.val();
                     if(childSnapshot.key == $checkoutpart_num ){
                         partquant = parseInt(childData.partquant);
                         checkoutpart_consum = childData.partconsum;
+                        partstatus = childData.partstatus;
                     }
                 });
             }).then(function(){
                 partquant = partquant-parseInt($checkoutpart_quant);
+                console.log(partstatus);
                 if(partquant > 0){
                     $checkoutpart_status = "Available";
                 }
@@ -97,19 +99,21 @@ jQuery(document).ready(function ($) {
                     $checkoutpart_status = "Unavailable";
                 }
                 else{
-                   $checkoutpart_status = "Checked out by "+user.displayName; 
+                    if(partstatus.indexOf('out') == -1){
+                        $checkoutpart_status = "Checked out by "+user.displayName;
+                        $checkoutpart_name = $checkoutpart_name.substr(11);
+                        firebase.database().ref('inventory/'+$checkoutpart_num).set({
+                                partname:$checkoutpart_name,
+                                partquant:partquant,
+                                partconsum:checkoutpart_consum,
+                                partstatus:$checkoutpart_status
+                        }).then(function(){
+                            populateInventory();
+                            $('#checkoutpart_form')[0].reset();
+                        })
+                    }
                 }
-                $checkoutpart_name = $checkoutpart_name.substr(11);
-                firebase.database().ref('inventory/'+$checkoutpart_num).set({
-                        partname:$checkoutpart_name,
-                        partquant:partquant,
-                        partconsum:checkoutpart_consum,
-                        partstatus:$checkoutpart_status
-                }).then(function(){
-                    populateInventory();
-                    $('#checkoutpart_form')[0].reset();
-                    $('#editPart').modal('toggle'); 
-                })
+                $('#editPart').modal('toggle'); 
             });   
         }
     });
