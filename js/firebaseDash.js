@@ -269,7 +269,8 @@ jQuery(document).ready(function ($) {
                 var row = $("<tr>");
                 var alumemail = childData.alumemail;
                 var emailarr = alumemail.split('@');
-                alumemail = '<a href="mailto:'+alumemail+'">'+emailarr[0]+'&#8203;@'+emailarr[1]+'</a>';
+                var emailarr2 = emailarr[1].split('.');
+                alumemail = '<a href="mailto:'+alumemail+'">'+emailarr[0]+'&#8203;@'+emailarr2[0]+'&#8203;.'+emailarr2[1]+'</a>';
                 var alumphone = childData.alumphone;
                 alumphone = '<a href="tel:+1-'+alumphone+'">'+alumphone+'</a>';
                 var alumcompany = childData.alumcompany;
