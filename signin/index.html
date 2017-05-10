@@ -24,18 +24,19 @@
     <!-- Fade plugin for JQuery -->
     <script src="../js/jquery.fadethis.js"></script>
     <!-- Firebase Setup -->
-    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-database.js"></script>
     <script>
       // Initialize Firebase
       var config = {
-        apiKey: "",
-        authDomain: "",
-        databaseURL: "",
-        storageBucket: "",
-        messagingSenderId: ""
+        apiKey: "AIzaSyBPYirsKVRgF6KJ_hfUhvd8Nz5rz_p4Fqk",
+        authDomain: "udfsae-40eac.firebaseapp.com",
+        databaseURL: "https://udfsae-40eac.firebaseio.com",
+        projectId: "udfsae-40eac",
+        storageBucket: "udfsae-40eac.appspot.com",
+        messagingSenderId: "849954139479"
       };
       firebase.initializeApp(config);
     </script>
@@ -140,7 +141,7 @@
                                 <div class="form-group row has-feedback">
                                     <label for="fname" class="col-md-2 text-right">First Name</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control textarea-drk" id="fname" name="fname" placeholder="First Name" data-minlength="5" maxlength="100" data-error="Please enter a valid name" required>
+                                        <input type="text" class="form-control textarea-drk" id="fname" name="fname" placeholder="First Name" data-minlength="1" maxlength="100" data-error="Please enter a first name" required>
                                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                         <div class="help-block with-errors text-left"></div>
                                     </div>
@@ -149,7 +150,7 @@
                                 <div class="form-group row has-feedback">
                                     <label for="lname" class="col-md-2 text-right">Last Name</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control textarea-drk" id="lname" name="lname" placeholder="First Name" data-minlength="5" maxlength="100" data-error="Please enter a valid name" required>
+                                        <input type="text" class="form-control textarea-drk" id="lname" name="lname" placeholder="First Name" data-minlength="1" maxlength="100" data-error="Please enter a last name" required>
                                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                         <div class="help-block with-errors text-left"></div>
                                     </div>
@@ -200,28 +201,28 @@
             <div class="row" id="social">
                 <div class="col-md-offset-4 col-md-1">
                     <center>
-                        <a href="https://www.facebook.com/realrandomllc/" target="_blank">
+                        <a href="https://www.facebook.com/BlueHenRacing/" target="_blank">
                             <div class="btn-facebook"><i class="fa fa-2x fa-facebook"></i></div>
                         </a>
                     </center>
                 </div>
                 <div class="col-md-1">
                     <center>
-                        <a href="https://twitter.com/realrandomrolls" target="_blank">
+                        <a href="https://twitter.com/BlueHenRacing" target="_blank">
                             <div class="btn-twitter"><i class="fa fa-2x fa-twitter"></i></div>
                         </a>
                     </center>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-1" style="padding-bottom:15px;">
                     <center>
-                        <a href="https://www.linkedin.com/company/real-random-llc" target="_blank">
+                        <a href="https://www.instagram.com/ud_fsae/" target="_blank">
                             <div class="btn-insta"><i class="fa fa-2x fa-instagram"></i></div>
                         </a>
                     </center>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-1" style="padding-bottom:15px;">
                     <center>
-                        <a href="mailto:info@realrandom.co">
+                        <a href="mailto:bluehenracing@gmail.com">
                             <div class="btn-linked"><i class="fa fa-2x fa-envelope"></i></div>
                         </a>
                     </center>
@@ -241,7 +242,6 @@
                 </div>
             </div>
         </div>
-    </div>
     <!-- End Page Content -->
     <!-- Back To Top Button -->
     <a href="#0" class="cd-top btn-block">Top</a>

@@ -145,7 +145,7 @@
     color: #0C99E4;
 }
 
-@media(min-width:768px) {
+@media(min-width:1200px) {
     #wrapper {
         padding-left: 200px;
     }

@@ -1,9 +1,12 @@
 jQuery(document).ready(function ($) {
     var newuser = false;
+    var name = "";
     $('#regform').validator().submit(function (e) {
         e.preventDefault();
         if (($('#regbtn').hasClass('disabled'))) {
         } else {
+            $fname = document.getElementById("fname").value;
+            $lname = document.getElementById("lname").value;
             $email = document.getElementById("email").value;
             $password = document.getElementById("pass3").value;
             firebase.auth().createUserWithEmailAndPassword($email, $password).catch(function(error) {
@@ -13,6 +16,7 @@ jQuery(document).ready(function ($) {
                     makeError("Please use a stronger password")
                 }
             });
+            name = $fname+" "+$lname;
             document.getElementById("regform").reset();
             newuser = true;
             makeAlert("Please check your email, and click the verification link");
@@ -85,23 +89,29 @@ jQuery(document).ready(function ($) {
         if (user) {
             var emailVerified = user.emailVerified;
             if(newuser){
+                user.updateProfile({
+                    displayName: name
+                }).then(function() {
+                    // Update successful.
+                }, function(error) {
+                    console.log("error");
+                });
                 sendEmailVerification();
                 newuser = false;
             }
           else if (emailVerified) {
-            window.location.replace("");
+            window.location.replace("../dashboard/index.html");
           }
           else{
              makeAlert("Please check your email, and click the verification link");
           }
         } else {
+            console.log("signed out");
           // User is signed out.
         }
       });
     }
-    window.onload = function() {
-      initApp();
-    };
+   initApp();
     window.onbeforeunload = function(){
         var user = firebase.auth().currentUser;
         if (user) {

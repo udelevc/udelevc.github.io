@@ -1,18 +1,176 @@
 jQuery(document).ready(function ($) {
-    var currentURL = "";
-    $lowerAZ = "abcdefghijklmnopqrstuvwxyz";
-    $upperAZ = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    $nums = "0123456789";
-    //async password generation
-    $('#pass_form').validator().submit(function (e) {
+    initApp();
+    var options1 = {
+        valueNames: [ 'part_num', 'part_name', 'part_quant', 'part_status' ],
+        item: '<tr><td class="part_num"></td><td class="part_name"></td><td class="part_quant"></td><td class="part_status"><i class="fa fa-check" style="color:green" aria-hidden="true"></i></td></tr>'
+    };
+    var partsList = new List('parts', options1);
+    var options2 = {
+        valueNames: [ 'alum_name', 'alum_email', 'alum_phone', 'alum_company' ],
+        item: '<tr><td class="alum_name"</td><td class="alum_email"></td><td class="alum_phone"></td><td class="alum_company"></td></tr>'
+    };
+    var alumsList = new List('alums', options2);
+    $(document).on("click", "#alumTable thead tr th a", function(e) {
+        e.stopPropagation();
+        $('#newalum').modal('toggle');
+    });
+    $(document).on("click", "#partsTable thead tr th a", function(e) {
+        e.stopPropagation();
+        var tr = $('#partsTable tbody tr');
+        var newnum = 0;
+        $('td', tr).each(function(i, td){
+            if(td.cellIndex == 0 && parseInt($(td).text()) > newnum){
+               newnum  = parseInt($(td).text());
+            }
+        });
+        newnum++;
+        $("#newpart_num").val(newnum);
+        $('#newpart').modal('toggle');
+    });
+    $('#newpart_form').validator().submit(function (e) {
         e.preventDefault();
-        if (($('#genbtn').hasClass('disabled'))) {
+        if (($('#newpartbtn').hasClass('disabled'))) {
         } else {
-            populateTable();
-            $('#newpass').modal('toggle');
+            $newpart_name = document.getElementById("newpart_name").value;
+            $newpart_quant = document.getElementById("newpart_quant").value;
+            $newpart_num = document.getElementById("newpart_num").value;
+            $newpart_consum = $('#newpart_consum:checked').val();
+            var newconsum = false;
+            if($newpart_consum){
+                newconsum = true;
+            }
+            firebase.database().ref('inventory/'+$newpart_num).set({
+                    partname:$newpart_name,
+                    partquant:$newpart_quant,
+                    partconsum:newconsum,
+                    partstatus:"Available"
+            });
+            populateInventory();
+            $('#newpart').modal('toggle');
+        }
+    });
+    $('#newalum_form').validator().submit(function (e) {
+        e.preventDefault();
+        if (($('#newalumbtn').hasClass('disabled'))) {
+        } else {
+            $newalum_name = document.getElementById("newalum_name").value;
+            $newalum_email = document.getElementById("newalum_email").value;
+            $newalum_phone = document.getElementById("newalum_phone").value;
+            $newalum_comp = document.getElementById("newalum_comp").value;
+            firebase.database().ref('alumni/'+$newalum_name).set({
+                    alumemail:$newalum_email,
+                    alumphone:$newalum_phone,
+                    alumcompany:$newalum_comp
+            });
+            populateAlums();
+            $('#newalum_form')[0].reset();
+            $('#newalum').modal('toggle');
+        }
+    });
+    $('#checkoutpart_form').validator().submit(function (e) {
+        e.preventDefault();
+        if (($('#checkoutbtn').hasClass('disabled'))) {
+        } else {
+            var user = firebase.auth().currentUser;
+            $checkoutpart_name = document.getElementById("checkpart_name").innerHTML;
+            $checkoutpart_quant = document.getElementById("checkoutpart_quant").value;
+            $checkoutpart_num = document.getElementById("checkpart_num").innerHTML;
+            $checkoutpart_status = "";
+            $checkoutpart_num = $checkoutpart_num.substr(13);
+            console.log($checkoutpart_num);
+            var partquant = 0;
+            var checkoutpart_consum = "off";
+            firebase.database().ref('inventory').once('value').then(function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                    var childData = childSnapshot.val();
+                    if(childSnapshot.key == $checkoutpart_num ){
+                        partquant = parseInt(childData.partquant);
+                        checkoutpart_consum = childData.partconsum;
+                    }
+                });
+            }).then(function(){
+                partquant = partquant-parseInt($checkoutpart_quant);
+                if(partquant > 0){
+                    $checkoutpart_status = "Available";
+                }
+                else if(checkoutpart_consum){
+                    $checkoutpart_status = "Unavailable";
+                }
+                else{
+                   $checkoutpart_status = "Checked out by "+user.displayName; 
+                }
+                $checkoutpart_name = $checkoutpart_name.substr(11);
+                firebase.database().ref('inventory/'+$checkoutpart_num).set({
+                        partname:$checkoutpart_name,
+                        partquant:partquant,
+                        partconsum:checkoutpart_consum,
+                        partstatus:$checkoutpart_status
+                }).then(function(){
+                    populateInventory();
+                    $('#checkoutpart_form')[0].reset();
+                    $('#editPart').modal('toggle'); 
+                })
+            });   
+        }
+    });
+    $('#checkinpart_form').validator().submit(function (e) {
+        e.preventDefault();
+        if (($('#checkinbtn').hasClass('disabled'))) {
+        } else {
+            var user = firebase.auth().currentUser;
+            $checkinpart_name = document.getElementById("checkpart_name").innerHTML;
+            $checkinpart_quant = document.getElementById("checkinpart_quant").value;
+            $checkinpart_num = document.getElementById("checkpart_num").innerHTML;
+            $checkinpart_status = "";
+            $checkinpart_num = $checkinpart_num.substr(13);
+            var partquant = 0;
+            var checkinpart_consum = "off";
+            var partstatus = "";
+            firebase.database().ref('inventory').once('value').then(function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                    var childData = childSnapshot.val();
+                    if(childSnapshot.key == $checkinpart_num ){
+                        partquant = parseInt(childData.partquant);
+                        checkinpart_consum = childData.partconsum;
+                        partstatus = childData.partstatus;
+                    }
+                });
+            }).then(function(){
+                partstatus = partstatus.substr(15);
+                if(!checkinpart_consum && partstatus != user.displayName){
+                    console.log("You didn't check this out");
+                    return;
+                }
+                partquant = partquant+parseInt($checkinpart_quant);
+                if(partquant > 0 && !checkinpart_consum){
+                    $checkinpart_status = "Available";
+                    partquant = 1;
+                }
+                else if(partquant > 0){
+                    $checkinpart_status = "Available";
+                }
+                else if(checkinpart_consum){
+                    $checkinpart_status = "Unavailable";
+                }
+                else{
+                   $checkinpart_status = "Checked out by "+user.displayName; 
+                }
+                $checkinpart_name = $checkinpart_name.substr(11);
+                firebase.database().ref('inventory/'+$checkinpart_num).set({
+                        partname:$checkinpart_name,
+                        partquant:partquant,
+                        partconsum:checkinpart_consum,
+                        partstatus:$checkinpart_status
+                }).then(function(){
+                    populateInventory();
+                    $('#checkinpart_form')[0].reset();
+                    $('#editPart').modal('toggle'); 
+                })
+            });   
         }
     });
     $('#acc_info1').validator().submit(function (e) {
+        e.preventDefault();
         if (($('#emailbtn').hasClass('disabled'))) {
         } else {
             $email = document.getElementById("acc_mail").value;
@@ -32,6 +190,7 @@ jQuery(document).ready(function ($) {
         }
     });
      $('#acc_info2').validator().submit(function (e) {
+         e.preventDefault();
          if (($('#passbtn').hasClass('disabled'))) {
         } else {
              $pass = document.getElementById("acc_pass").value;
@@ -60,50 +219,66 @@ jQuery(document).ready(function ($) {
       // Listening for auth state changes.
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
-          // User is signed in.
-          var uid = user.uid;
-          populateTable();
-        } else {
+            // User is signed in.
+              populateInventory();
+              populateAlums();
+          } else {
           // User is signed out.
-          window.location.replace("https://realrandom.co/new/signin");
+          window.location.replace("../signin/");
         }
         });
-    };
-    window.onload = function() {
-        initApp();
     };
     $("#signOut a").click(function() {
        firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             firebase.auth().signOut();
-            window.location.replace("https://realrandom.co/new/signin");
+            window.location.replace("../signin/");
           }
         });
     });
-    window.onbeforeunload = function(){
-        firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            firebase.auth().signOut();
-            window.location.replace("https://realrandom.co/new/signin");
-          }
+    function populateInventory(){
+        $("#partsTable tbody tr").remove();
+        partsList.clear();
+        return firebase.database().ref('inventory').once('value').then(function(snapshot) {
+            snapshot.forEach(function(childSnapshot) {
+                var childData = childSnapshot.val();
+                var partname = childData.partname;
+                var partquant = childData.partquant;
+                var partstatus = childData.partstatus;
+                if(partstatus.indexOf("Available") != -1){
+                    partstatus = '<i class="fa fa-check" style="color:green" aria-hidden="true"></i>'+partstatus;
+                }
+                else{
+                    partstatus = '<i class="fa fa-times" style="color:red" aria-hidden="true"></i>'+partstatus;
+                }
+                partsList.add({
+                    part_num: childSnapshot.key,
+                    part_name: partname,
+                    part_quant: partquant,
+                    part_status: partstatus
+                });
+            });
         });
     }
-    function populateTable(){
-        var user = firebase.auth().currentUser;
-        var uid = user.uid;
-        var database = firebase.database();
-        $("#passTable tbody tr").remove();
-        return firebase.database().ref('web-users/'+uid).once('value').then(function(snapshot) {
+    function populateAlums(){
+        $("#alumTable tbody tr").remove();
+        alumsList.clear();
+        return firebase.database().ref('alumni').once('value').then(function(snapshot) {
             snapshot.forEach(function(childSnapshot) {
                 var childData = childSnapshot.val();
                 var row = $("<tr>");
-                var pass = childData.pass;
-                pass = CryptoJS.AES.decrypt(pass, uid);
-                pass = pass.toString(CryptoJS.enc.Utf8);
-                row.append($("<td>"+childSnapshot.key.replace("_", ".")+"</td>"))
-                    .append($("<td>"+childData.user+"</td>"))
-                    .append($("<td>"+pass+"<a class='btn-edit' style='float:right;' ><i class='fa fa-trash-o'></i></a></td>"));
-                $("#passTable tbody").append(row);
+                var alumemail = childData.alumemail;
+                var emailarr = alumemail.split('@');
+                alumemail = '<a href="mailto:'+alumemail+'">'+emailarr[0]+'&#8203;@'+emailarr[1]+'</a>';
+                var alumphone = childData.alumphone;
+                alumphone = '<a href="tel:+1-'+alumphone+'">'+alumphone+'</a>';
+                var alumcompany = childData.alumcompany;
+                alumsList.add({
+                    alum_name: childSnapshot.key,
+                    alum_email: alumemail,
+                    alum_phone: alumphone,
+                    alum_company: alumcompany
+                });                
             });
         });
     }
@@ -113,94 +288,105 @@ jQuery(document).ready(function ($) {
         var num = "";
         $('td', tr).each(function(i, td){
             if(td.cellIndex == 0){
-                num = $(td).text();
+               $("#checkpart_num").html("Part Number: "+$(td).text());
             }
             else if(td.cellIndex == 1){
-                part = $(td).text();
+                $("#checkpart_name").html("Part Name: "+$(td).text());
+                $("#checkPartLabel").html("Check "+$(td).text()+" in/out");
             }
-            else if(td.cellIndex == 3 && ($(td).text()).indexOf("Checked") != -1){
-                $("#editTableLabel").html("Check In");
-                $("#partnum").html("Part Number: "+num);
-                $("#partname").html("Part Name: "+part);
-                $("#checkbtn").html("Check In");
+            else if(td.cellIndex == 2){
+                var quantity = parseInt($(td).text().match(/\d+/g));
+                $("#checkoutpart_quant").prop('max',quantity);
             }
             else if(td.cellIndex == 3 && ($(td).text()).indexOf("Available") != -1){
-                var quantity = parseInt($(td).text().match(/\d+/g));
-                $("#editTableLabel").html("Check Out");
-                $("#partnum").html("Part Number: "+num);
-                $("#partname").html("Part Name: "+part);
-                $("#checkbtn").html("Check Out");
-                $("#quantity").prop('max',quantity);
+                //
             }
         });
-        $('#editTable').modal('toggle');
-    });
-    $('#edit_user').validator().submit(function (e) {
-        e.preventDefault();
-         if (($('#userbtn').hasClass('disabled'))) {
-        } else {
-            var username = document.getElementById("edituser").value;
-            var user = firebase.auth().currentUser;
-            var uid = user.uid;
-            var database = firebase.database();
-            firebase.database().ref('web-users/'+uid).once('value').then(function(snapshot) {
-                snapshot.forEach(function(childSnapshot) {
-                    var childData = childSnapshot.val();
-                    if(childSnapshot.key === currentURL){
-                        var password = childData.pass;
-                        firebase.database().ref("web-users/"+uid+"/"+currentURL).set({
-                            user:username,
-                            pass:password
-                        });
-                        $("#formout").fadeOut(300);
-                        $("#form-output").html("Successfully updated");
-                        $("#formout").fadeIn(800);
-                        populateTable();
-                    }
-                });
-            });
-        }
-    });
-    $('#edit_pass').validator().submit(function (e) {
-        e.preventDefault();
-         if (($('#gennewbtn').hasClass('disabled'))) {
-        } else {
-            var length = document.getElementById("editlength").value;
-            var syms = document.getElementById("editsyms").value;
-            var uppercaseValue = $('#editupper:checked').val();
-            var numsValue = $('#editnums:checked').val();
-            var chars = $lowerAZ + syms;
-            if (uppercaseValue) {
-                chars += $upperAZ;
-            }
-            if (numsValue) {
-                chars += $nums;
-            }
-            var user = firebase.auth().currentUser;
-            var uid = user.uid;
-            var database = firebase.database();
-            firebase.database().ref('web-users/'+uid).once('value').then(function(snapshot) {
-                snapshot.forEach(function(childSnapshot) {
-                    var childData = childSnapshot.val();
-                    if(childSnapshot.key === currentURL){
-                        var username = childData.user;
-                        firebase.database().ref("web-users/"+uid+"/"+currentURL).set({
-                            user:username,
-                            pass:encrypted.toString()
-                        });
-                        $("#formout").fadeOut(300);
-                        $("#form-output").html("Successfully updated");
-                        $("#formout").fadeIn(800);
-                        populateTable();
-                    }
-                });
-            });
-        }
+        $('#editPart').modal('toggle');
     });
     // Close nav on scroll on mobile
     $(window).scroll(function () {
-        if(($(window).width() <= 768) && ($("#wrapper").hasClass("toggled"))){
+        if(($(window).width() <= 1200) && ($("#wrapper").hasClass("toggled"))){
             $("#wrapper").toggleClass("toggled");
         }
     });
+    $('#new_parts').validator().submit(function (e) {
+          e.preventDefault();
+          if (($('#partsbtn').hasClass('disabled'))) {
+          } else {
+            var data = getFormData();
+            var url = 'https://script.google.com/macros/s/AKfycbxAvVVeDv7w-XIpcqzp-ck5vAkuyJtGJc-ZFzYuVkElKAxWQn8U/exec'
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', url);
+            // xhr.withCredentials = true;
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                console.log( xhr.status, xhr.statusText );
+                console.log(xhr.responseText);
+                if((xhr.responseText).includes('"result":"success"')){
+                    formOutput("Success! Someone will email you back as soon as possible");
+                }
+                else{
+                   formOutput("Submission failed, try reloading the page, or email me@theofleck.com"); 
+                }
+                //document.getElementById('new_parts').style.display = 'none'; // hide form
+                //document.getElementById('thankyou_message').style.display = 'block';
+                return;
+            };
+            // url encode form data for sending as post data
+            var encoded = Object.keys(data).map(function(k) {
+                return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+            }).join('&')
+            xhr.send(encoded);
+          }
+        });
+    
+    function validEmail(email) { // see:
+      var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+      return re.test(email);
+    }
+    // get all data in form and return object
+    function getFormData() {
+      var elements = document.getElementById("new_parts").elements; // all form elements
+      var fields = Object.keys(elements).map(function(k) {
+        if(elements[k].name !== undefined) {
+          return elements[k].name;
+        // special case for Edge's html collection
+        }else if(elements[k].length > 0){
+          return elements[k].item(0).name;
+        }
+      }).filter(function(item, pos, self) {
+        return self.indexOf(item) == pos && item;
+      });
+      var data = {};
+      fields.forEach(function(k){
+        data[k] = elements[k].value;
+        var str = ""; // declare empty string outside of loop to allow
+                      // it to be appended to for each item in the loop
+        if(elements[k].type === "checkbox"){ // special case for Edge's html collection
+          str = str + elements[k].checked + ", "; // take the string and append 
+                                                  // the current checked value to 
+                                                  // the end of it, along with 
+                                                  // a comma and a space
+          data[k] = str.slice(0, -2); // remove the last comma and space 
+                                      // from the  string to make the output 
+                                      // prettier in the spreadsheet
+        }else if(elements[k].length){
+          for(var i = 0; i < elements[k].length; i++){
+            if(elements[k].item(i).checked){
+              str = str + elements[k].item(i).value + ", "; // same as above
+              data[k] = str.slice(0, -2);
+            }
+          }
+        }
+      });
+      var user = firebase.auth().currentUser;
+      data['member'] = user.displayName;
+      data['email'] = user.email;
+      console.log(data);
+      return data;
+    }
+    function formOutput(message){
+        $('#parts_placeholder').hide().html('<div class="alert alert-info alert-dismissable fade-alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span>'+message+'</span></div>').fadeIn(800);
+    }
 });

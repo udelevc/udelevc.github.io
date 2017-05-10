@@ -17,7 +17,7 @@
     <!-- Simple Sidebar CSS-->
     <link rel="stylesheet" href="../css/simple-sidebar.css">
     <!-- Custom CSS -->
-    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400|Source+Sans+Pro:200,300,400,600,700|Oswald:400,300,700|Economica:400,700,400italic|Ubuntu:300,400,500,700,300italic,400italic|Titillium+Web:200,300,600,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400|Source+Sans+Pro:200,300,400,600,700|Oswald:400,300,700|Economica:400,700,400italic|Ubuntu:300,400,500,700,300italic,400italic|Titillium+Web:200,300,600,400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="../css/style.css">
     <!-- Most Recent JQuery -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -32,25 +32,25 @@
     <!-- ListJS -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
     <!-- Firebase Setup -->
-    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-database.js"></script>
     <script>
       // Initialize Firebase
       var config = {
-        apiKey: "",
-        authDomain: "",
-        databaseURL: "",
-        storageBucket: "",
-        messagingSenderId: ""
+        apiKey: "AIzaSyBPYirsKVRgF6KJ_hfUhvd8Nz5rz_p4Fqk",
+        authDomain: "udfsae-40eac.firebaseapp.com",
+        databaseURL: "https://udfsae-40eac.firebaseio.com",
+        projectId: "udfsae-40eac",
+        storageBucket: "udfsae-40eac.appspot.com",
+        messagingSenderId: "849954139479"
       };
       firebase.initializeApp(config);
     </script>
     <!-- Custom JS -->
     <script src="../js/main.js"></script>
     <script src="../js/firebaseDash.js"></script>
-    <script src="../js/emailHandler.js"></script>
 </head>
 
 <body>
@@ -104,18 +104,13 @@
                         <table class="table-fill" id="partsTable">
                             <thead>
                                 <tr>
-                                    <th class="text-left"><button class="sort" data-sort="part-num">Part Number</button></th>
-                                    <th class="text-left"><button class="sort" data-sort="part-name">Part Name</button></th>
-                                    <th class="text-left"><button class="sort" data-sort="part-quant">#</button></th>
-                                    <th class="text-left"><button class="sort" data-sort="part-status">Status</button></th>
+                                    <th class="text-left" style="width:10%"><button class="sort" data-sort="part_num">Pa&#8203;rt #</button></th>
+                                    <th class="text-left"><button class="sort" data-sort="part_name">Part Name</button></th>
+                                    <th class="text-left" style="width:10%"><button class="sort" data-sort="part_quant">#</button></th>
+                                    <th class="text-left"><button class="sort" style="width:85%" data-sort="part_status">Status</button><a class="btn-add" style="float: right;" ><i class="fa fa-plus-square-o" aria-hidden="true"></i></a></th>
                                 </tr>
                             </thead>
-                            <tbody class="list table-hover">
-                                <tr><td class="part-num">0001</td><td class="part-name">Hex Bolt</td><td class="part-quant">15</td><td class="part-status"><i class="fa fa-check" style="color:green" aria-hidden="true"></i>Available</td></tr>
-                                <tr><td class="part-num">0002</td><td class="part-name">Hex Nut</td><td class="part-quant">8</td><td class="part-status"><i class="fa fa-check" style="color:green" aria-hidden="true"></i>Available</td></tr>
-                                <tr><td class="part-num">0003</td><td class="part-name">1/4" Socket Wrench</td><td class="part-quant">0</td><td class="part-status"><i class="fa fa-times" style="color:red" aria-hidden="true"></i> Checked out by Tyler Gravatt</td></tr>
-                                <tr><td class="part-num">0004</td><td class="part-name">Design Studio Dremel #3</td><td class="part-quant">0</td><td class="part-status"><i class="fa fa-times" style="color:red" aria-hidden="true"></i> Checked out by Ryan Tocker</td></tr>
-                                <tr><td class="part-num">0005</td><td class="part-name">Tube Bender</td><td class="part-quant">1</td><td class="part-status"><i class="fa fa-check" style="color:green" aria-hidden="true"></i> Available</td></tr>
+                            <tbody class="list table-hover" id="partsBody">
                             </tbody>
                         </table>
                     </div>
@@ -197,18 +192,13 @@
                         <table class="table-fill" id="alumTable">
                             <thead>
                                 <tr>
-                                    <th class="text-left"><button class="sort" data-sort="alum-name">Name</button></th>
-                                    <th class="text-left"><button class="sort" data-sort="alum-email">Email</button></th>
-                                    <th class="text-left"><button class="sort" data-sort="alum-phone">Phone Number</button></th>
-                                    <th class="text-left"><button class="sort" data-sort="alum-company">Company</button></th>
+                                    <th class="text-left"><button class="sort" data-sort="alum_name">Name</button></th>
+                                    <th class="text-left"><button class="sort" data-sort="alum_email">Email</button></th>
+                                    <th class="text-left"><button class="sort" data-sort="alum_phone">Phone Number</button></th>
+                                    <th class="text-left"><button class="sort" style="width:85%" data-sort="alum_company">Company</button><a class="btn-add" style="float: right;" ><i class="fa fa-plus-square-o" aria-hidden="true"></i></a></th>
                                 </tr>
                             </thead>
                             <tbody class="list table-hover">
-                                <tr><td class="alum-name">Mike Hawley</td><td class="alum-email"><a href="mailto:123@gmail.com">123&#8203;@&#8203;gmail.com</a></td><td class="alum-phone">123 - 456 - 7890</td><td class="alum-company">W.L. Gore</td></tr>
-                                <tr><td class="alum-name">Person 2</td><td class="alum-email"><a href="mailto:123@gmail.com">323&#8203;@&#8203;gmail.com</a></td><td class="alum-phone">223 - 456 - 7890</td><td class="alum-company">Honda</td></tr>
-                                <tr><td class="alum-name">Person 3</td><td class="alum-email"><a href="mailto:123@gmail.com">523&#8203;@&#8203;gmail.com</a></td><td class="alum-phone">323 - 456 - 7890</td><td class="alum-company">DuPont</td></tr>
-                                <tr><td class="alum-name">Person 4</td><td class="alum-email"><a href="mailto:123@gmail.com">223&#8203;@&#8203;gmail.com</a></td><td class="alum-phone">423 - 456 - 7890</td><td class="alum-company">W.L. Gore</td></tr>
-                                <tr><td class="alum-name">Person 5</td><td class="alum-email"><a href="mailto:123@gmail.com">023&#8203;@&#8203;gmail.com</a></td><td class="alum-phone">123 - 456 - 7890</td><td class="alum-company">W.L. Gore</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -228,7 +218,7 @@
                     <div id = "alert_placeholder"></div>
                     <div class="col-md-offset-1 col-md-10">
                         <center>
-                            <form id="acc_info1" name="acc_info" data-toggle="validator" data-focus="false" method="post">
+                            <form id="acc_info1" name="acc_info1" data-toggle="validator" data-focus="false" method="post">
                                 <div class="form-group row has-feedback">
                                     <label for="acc_mail" class="col-md-2 text-right">Email Address</label>
                                     <div class="col-md-10">
@@ -244,11 +234,11 @@
                                 </div>
                             </form>
                             <br>
-                            <form id="acc_info2" name="acc_info" data-toggle="validator" data-focus="false" method="post">
+                            <form id="acc_info2" name="acc_info2" data-toggle="validator" data-focus="false" method="post">
                                 <div class="form-group row has-feedback">
                                     <label for="acc_pass" class="col-md-2 text-right">New Password</label>
                                     <div class="col-md-10">
-                                        <input type="password" class="form-control textarea-drk" id="acc_pass" name="acc_pass" placeholder="Your New Password"pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{1,}" data-minlength="12" maxlength="32" data-pattern-error="Password must contain one of each: 0-9, a-z, A-Z" data-error="Password must be 12-32 characters" required>
+                                        <input type="password" class="form-control textarea-drk" id="acc_pass" name="acc_pass" placeholder="Your New Password" pattern="(?=.*[a-z]).{1,}" data-minlength="8" maxlength="32" data-pattern-error="Password must contain letters" data-error="Password must be 8-32 characters" required>
                                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                         <div class="help-block with-errors text-left"></div>
                                     </div>
@@ -271,34 +261,34 @@
                     </div>
                 </div>
             </section>
-            <!-- Footer -->
-            <div class="foot" id="contact">
+           <!-- Footer -->
+        <div class="foot" id="contact">
             <br>
             <div class="row" id="social">
                 <div class="col-md-offset-4 col-md-1">
                     <center>
-                        <a href="https://www.facebook.com/realrandomllc/" target="_blank">
+                        <a href="https://www.facebook.com/BlueHenRacing/" target="_blank">
                             <div class="btn-facebook"><i class="fa fa-2x fa-facebook"></i></div>
                         </a>
                     </center>
                 </div>
                 <div class="col-md-1">
                     <center>
-                        <a href="https://twitter.com/realrandomrolls" target="_blank">
+                        <a href="https://twitter.com/BlueHenRacing" target="_blank">
                             <div class="btn-twitter"><i class="fa fa-2x fa-twitter"></i></div>
                         </a>
                     </center>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-1" style="padding-bottom:15px;">
                     <center>
-                        <a href="https://www.linkedin.com/company/real-random-llc" target="_blank">
+                        <a href="https://www.instagram.com/ud_fsae/" target="_blank">
                             <div class="btn-insta"><i class="fa fa-2x fa-instagram"></i></div>
                         </a>
                     </center>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-1" style="padding-bottom:15px;">
                     <center>
-                        <a href="mailto:info@realrandom.co">
+                        <a href="mailto:bluehenracing@gmail.com">
                             <div class="btn-linked"><i class="fa fa-2x fa-envelope"></i></div>
                         </a>
                     </center>
@@ -318,16 +308,15 @@
                 </div>
             </div>
         </div>
-    </div>
-        <!-- /#page-content-wrapper -->
+    <!-- End Page Content -->
         <!-- Begin Modal Content -->
-        <div class="modal fade" id="editTable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal fade" id="editPart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-md">
                 <div class="modal-content form-sq">
                     <div class="modal-header" style="border-bottom: none;">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff;" aria-hidden="true">&times;</span>
                         </button>
-                        <h4 id="editTableLabel"></h4>
+                        <h4 id="checkPartLabel"></h4>
                     </div>
                     <div class="line"></div>
                     <br>
@@ -336,30 +325,38 @@
                             <p id="form-output" style="color:green;text-align:center;"></p>
                         </div>
                         <div class="row">
-                            <p id="partnum" style="text-align:center;"></p>
+                            <p id="checkpart_num" style="text-align:center;"></p>
                         </div>
                         <div class="row">
-                            <p id="partname" style="text-align:center;"></p>
+                            <p id="checkpart_name" style="text-align:center;"></p>
                         </div>
-                        <form id="part_quantity" name="part_quantity" data-toggle="validator" data-focus="false" method="post">
+                        <br>
+                        <form id="checkoutpart_form" name="checkout_form" data-toggle="validator" data-focus="false" method="post">
                             <div class="form-group row has-feedback">
-                                <label for="quantity" class="col-md-offset-3 col-md-2 text-right" style="font-size:1.3em;">Quantity: </label>
+                                <label for="checkoutpart_quant" class="col-md-5 text-right" style="font-size:1.3em;">Check out quantity: </label>
                                 <div class="form-group col-md-4 has-feedback">
-                                    <input type="number" class="form-control textarea-drk" id="quantity" name="quantity" value="1" max="1" data-error="Please enter a valid quantity" required>
+                                    <input type="number" class="form-control textarea-drk" id="checkoutpart_quant" name="checkoutpart_quant" value="1" max="1" min="0" data-error="Please enter a valid quantity" required>
                                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     <div class="help-block with-errors text-left"></div>
                                 </div>
+                                <div class="col-md-1 sub-mob">
+                                    <button type="submit" id="checkoutbtn" class="btn-block btn-sm">Check Out</button>
+                                </div>
+                            </div>                        
+                        </form>
+                        <form id="checkinpart_form" name="checkinpart_form" data-toggle="validator" data-focus="false" method="post">
+                            <div class="form-group row has-feedback">
+                                <label for="checkinpart_quant" class="col-md-5 text-right" style="font-size:1.3em;">Check in quantity: </label>
+                                <div class="form-group col-md-4 has-feedback">
+                                    <input type="number" class="form-control textarea-drk" id="checkinpart_quant" name="checkinpart_quant" value="1" max="10000" min="0" data-error="Please enter a valid quantity" required>
+                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    <div class="help-block with-errors text-left"></div>
+                                </div>
+                                <div class="col-md-1 sub-mob">
+                                    <button type="submit" id="checkinbtn" class="btn-block btn-sm">Check In</button>
+                                </div>
                             </div>
-                            <br><br>
-                        <div class="row">
-                        <div class="col-md-offset-3 col-md-2">
-                            <button type="button" class="btn-block btn-sm" data-dismiss="modal">Cancel</button>
-                        </div>
-                        <div class="col-md-offset-1 col-md-1 sub-mob">
-                            <button type="submit" id="checkbtn" class="btn-block btn-sm"></button>
-                        </div>
-                    </div>
-                        </form>  
+                        </form> 
                     </div>
                 </div>
             </div>
@@ -423,6 +420,118 @@
             </div>
         </div>
         <!-- End Modal Content -->
+         <!-- Begin Modal Content -->
+       <div class="modal fade" id="newpart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content form-sq">
+                    <div class="modal-header" style="border-bottom: none;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff;" aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 id="myModalLabel">Add an Inventory Item</h4>
+                    </div>
+                    <div class="line"></div>
+                    <br>
+                    <div class="modal-body">
+                        <form id="newpart_form" name="newpart_form" data-toggle="validator" method="post">
+                            <div class="form-group row has-feedback">
+                                <label for="newpart_name" class="col-md-2 text-right">Part Name</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control textarea-drk" id="newpart_name" name="newpart_name" placeholder="Tube bender" maxlength="100" required>
+                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row has-feedback">
+                                <label for="newpart_quant" class="col-md-2 text-right">Quanity</label>
+                                <div class="col-md-3">
+                                    <input type="number" class="form-control textarea-drk" id="newpart_quant" name="newpart_quant" placeholder="" value="1" max="1000" min="1" data-error="Must be 1-1000" required>
+                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    <div class="help-block with-errors text-left"></div>
+                                </div>
+                                <label for="newpart_consum" class="col-md-2 text-right">Consumable</label>
+                                <div class="col-md-1">
+                                    <input type="checkbox" name="newpart_consum" id="newpart_consum" checked/>
+                                </div>
+                                <label for="newpart_num" class="col-md-1 text-right">#</label>
+                                <div class="col-md-3">
+                                    <input type="number" class="form-control textarea-drk" id="newpart_num" name="newpart_num" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-2">
+                                    <button type="button" class="btn-block btn-sm" data-dismiss="modal">Cancel</button>
+                                </div>
+                                <div class="col-md-offset-1 col-md-1 sub-mob">
+                                    <button type="submit" id="newpartbtn" class="btn-block btn-sm">Add</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal Content -->
+         <!-- Begin Modal Content -->
+       <div class="modal fade" id="newalum" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content form-sq">
+                    <div class="modal-header" style="border-bottom: none;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff;" aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 id="myModalLabel">Add an Alumni Contact</h4>
+                    </div>
+                    <div class="line"></div>
+                    <br>
+                    <div class="modal-body">
+                        <form id="newalum_form" name="newalum_form" data-toggle="validator" method="post">
+                            <div class="form-group row has-feedback">
+                                <label for="newalum_name" class="col-md-2 text-right">Name</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control textarea-drk" id="newalum_name" name="newalum_name" placeholder="Joe Citizen" maxlength="100" required>
+                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row has-feedback">
+                                <label for="newalum_email" class="col-md-2 text-right">Email</label>
+                                <div class="col-md-10">
+                                    <input type="email" class="form-control textarea-drk" id="newalum_email" name="newalum_email" placeholder="joe@citizen.com" maxlength="100" required>
+                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row has-feedback">
+                                <label for="newalum_phone" class="col-md-2 text-right">Phone Number</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control textarea-drk" id="newalum_phone" name="newalum_phone" placeholder="123-456-7890" maxlength="100">
+                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row has-feedback">
+                                <label for="newalum_comp" class="col-md-2 text-right">Company</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control textarea-drk" id="newalum_comp" name="newalum_comp" placeholder="Joe Inc" maxlength="100">
+                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-2">
+                                    <button type="button" class="btn-block btn-sm" data-dismiss="modal">Cancel</button>
+                                </div>
+                                <div class="col-md-offset-1 col-md-1 sub-mob">
+                                    <button type="submit" id="newalumbtn" class="btn-block btn-sm">Add</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal Content -->
     </div>
     <!-- /#wrapper -->
     <!-- Menu Toggle Script -->
@@ -433,6 +542,7 @@
     });
     </script>
     <script>
+        /*
         var options1 = {
             valueNames: [ 'part-name', 'part-num', 'part-quant', 'part-status' ]
         };
@@ -441,6 +551,7 @@
             valueNames: [ 'alum-name', 'alum-email', 'alum-phone', 'alum-company' ]
         };
         var alumList = new List('alums', options2);
+        */
     </script>
 </body>
 
