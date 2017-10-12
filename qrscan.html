@@ -3,11 +3,9 @@
     <head>
         <title>Instascan</title>
         <script type="text/javascript" src="js/instascan.min.js"></script>
-    </head>
-    <body>
-        <video id="preview"></video>
         <script type="text/javascript">
             let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+            current_camera = 0;
             scanner.addListener('scan', function (content) {
                 console.log(content);
             });
@@ -20,6 +18,29 @@
             }).catch(function (e) {
                 console.error(e);
             });
+            function changeCamera(){
+                scanner.stop();
+                Instascan.Camera.getCameras().then(function (cameras) {
+                    if (cameras.length > 1) {
+                        if(current_camera = 0){
+                            current_camera = 1;
+                            scanner.start(cameras[1]);
+                        }
+                        else{
+                            current_camera = 0;
+                            scanner.start(cameras[0]); 
+                        }
+                    } else {
+                        console.error('No cameras found.');
+                    }
+                }).catch(function (e) {
+                    console.error(e);
+                });
+            }
         </script>
+    </head>
+    <body>
+        <button onclick="changeCamera()">Switch Cameras</button>
+        <video id="preview"></video>
     </body>
 </html>
