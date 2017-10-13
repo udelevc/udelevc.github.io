@@ -9,11 +9,6 @@ jQuery(document).ready(function ($) {
         valueNames: [ 'alum_name', 'alum_email', 'alum_phone', 'alum_company' ],
         item: '<tr><td class="alum_name"</td><td class="alum_email"></td><td class="alum_phone"></td><td class="alum_company"></td></tr>'
     };
-    var alumsList = new List('alums', options2);
-    $(document).on("click", "#alumTable thead tr th a", function(e) {
-        e.stopPropagation();
-        $('#newalum').modal('toggle');
-    });
     $(document).on("click", "#partsTable thead tr th a", function(e) {
         e.stopPropagation();
         var tr = $('#partsTable tbody tr');
@@ -47,24 +42,6 @@ jQuery(document).ready(function ($) {
             });
             populateInventory();
             $('#newpart').modal('toggle');
-        }
-    });
-    $('#newalum_form').validator().submit(function (e) {
-        e.preventDefault();
-        if (($('#newalumbtn').hasClass('disabled'))) {
-        } else {
-            $newalum_name = document.getElementById("newalum_name").value;
-            $newalum_email = document.getElementById("newalum_email").value;
-            $newalum_phone = document.getElementById("newalum_phone").value;
-            $newalum_comp = document.getElementById("newalum_comp").value;
-            firebase.database().ref('alumni/'+$newalum_name).set({
-                    alumemail:$newalum_email,
-                    alumphone:$newalum_phone,
-                    alumcompany:$newalum_comp
-            });
-            populateAlums();
-            $('#newalum_form')[0].reset();
-            $('#newalum').modal('toggle');
         }
     });
     $('#checkoutpart_form').validator().submit(function (e) {
@@ -264,29 +241,6 @@ jQuery(document).ready(function ($) {
             });
         });
     }
-    function populateAlums(){
-        $("#alumTable tbody tr").remove();
-        alumsList.clear();
-        return firebase.database().ref('alumni').once('value').then(function(snapshot) {
-            snapshot.forEach(function(childSnapshot) {
-                var childData = childSnapshot.val();
-                var row = $("<tr>");
-                var alumemail = childData.alumemail;
-                var emailarr = alumemail.split('@');
-                var emailarr2 = emailarr[1].split('.');
-                alumemail = '<a href="mailto:'+alumemail+'">'+emailarr[0]+'&#8203;@'+emailarr2[0]+'&#8203;.'+emailarr2[1]+'</a>';
-                var alumphone = childData.alumphone;
-                alumphone = '<a href="tel:+1-'+alumphone+'">'+alumphone+'</a>';
-                var alumcompany = childData.alumcompany;
-                alumsList.add({
-                    alum_name: childSnapshot.key,
-                    alum_email: alumemail,
-                    alum_phone: alumphone,
-                    alum_company: alumcompany
-                });                
-            });
-        });
-    }
     $(document).on("click", "#partsTable tbody tr", function(e) {
         var tr = $(this);
         var part = "";
@@ -320,7 +274,7 @@ jQuery(document).ready(function ($) {
           if (($('#partsbtn').hasClass('disabled'))) {
           } else {
             var data = getFormData();
-            var url = 'https://script.google.com/macros/s/AKfycbxAvVVeDv7w-XIpcqzp-ck5vAkuyJtGJc-ZFzYuVkElKAxWQn8U/exec'
+            var url = 'https://script.google.com/macros/u/1/s/AKfycbyjVbMBSIM5tjnL6fWu-ItWe4t0FU-P9vdlaT8k0N6oob9xhJU/exec'
             var xhr = new XMLHttpRequest();
             xhr.open('POST', url);
             // xhr.withCredentials = true;

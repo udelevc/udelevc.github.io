@@ -181,36 +181,8 @@
                     </div>
                 </div>
             </section>
-            <!-- Alumni Contact Content -->
-            <section id="alum" class="container content-section trans-section text-center mob-dash-sec" style="position: relative;padding-top: 55px;padding-left: 50px;">
-                <h2 class="text-left">Alumni Contact Information</h2>
-                <div class="line-alt"></div>
-                <br><br>
-                <div class="row">
-                    <div id="alums" class="col-md-12 table-responsive" style="padding: 0px 0px 0px 0px;border:none;">
-                        <input class="search" placeholder="Search" />
-                        <table class="table-fill" id="alumTable">
-                            <thead>
-                                <tr>
-                                    <th class="text-left"><button class="sort" data-sort="alum_name">Name</button></th>
-                                    <th class="text-left"><button class="sort" data-sort="alum_email">Email</button></th>
-                                    <th class="text-left"><button class="sort" data-sort="alum_phone">Phone Number</button></th>
-                                    <th class="text-left"><button class="sort" style="width:85%" data-sort="alum_company">Company</button><a class="btn-add" style="float: right;" ><i class="fa fa-plus-square-o" aria-hidden="true"></i></a></th>
-                                </tr>
-                            </thead>
-                            <tbody class="list table-hover">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-offset-10 col-md-1 text-right">
-
-                    </div>
-                </div>
-            </section>
             <!-- Account Info Content -->
-            <section id="acc" class="container content-section inverse-section text-center mob-dash-sec" style="position: relative;padding-top: 55px;padding-left: 50px;">
+            <section id="acc" class="container content-section trans-section text-center mob-dash-sec" style="position: relative;padding-top: 55px;padding-left: 50px;">
                 <h2 class="text-left">Account Settings</h2>
                 <div class="line-alt"></div>
                 <br><br>
@@ -265,30 +237,16 @@
         <div class="foot" id="contact">
             <br>
             <div class="row" id="social">
-                <div class="col-md-offset-4 col-md-1">
+                <div class="col-md-offset-5 col-md-1">
                     <center>
-                        <a href="https://www.facebook.com/BlueHenRacing/" target="_blank">
+                        <a href="https://www.facebook.com/UDEVClub/" target="_blank">
                             <div class="btn-facebook"><i class="fa fa-2x fa-facebook"></i></div>
                         </a>
                     </center>
                 </div>
-                <div class="col-md-1">
-                    <center>
-                        <a href="https://twitter.com/BlueHenRacing" target="_blank">
-                            <div class="btn-twitter"><i class="fa fa-2x fa-twitter"></i></div>
-                        </a>
-                    </center>
-                </div>
                 <div class="col-md-1" style="padding-bottom:15px;">
                     <center>
-                        <a href="https://www.instagram.com/ud_fsae/" target="_blank">
-                            <div class="btn-insta"><i class="fa fa-2x fa-instagram"></i></div>
-                        </a>
-                    </center>
-                </div>
-                <div class="col-md-1" style="padding-bottom:15px;">
-                    <center>
-                        <a href="mailto:bluehenracing@gmail.com">
+                        <a href="mailto:udelevc@gmail.com">
                             <div class="btn-linked"><i class="fa fa-2x fa-envelope"></i></div>
                         </a>
                     </center>
@@ -466,64 +424,6 @@
                                 </div>
                                 <div class="col-md-offset-1 col-md-1 sub-mob">
                                     <button type="submit" id="newpartbtn" class="btn-block btn-sm">Add</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Modal Content -->
-         <!-- Begin Modal Content -->
-       <div class="modal fade" id="newalum" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-md">
-                <div class="modal-content form-sq">
-                    <div class="modal-header" style="border-bottom: none;">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff;" aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 id="myModalLabel">Add an Alumni Contact</h4>
-                    </div>
-                    <div class="line"></div>
-                    <br>
-                    <div class="modal-body">
-                        <form id="newalum_form" name="newalum_form" data-toggle="validator" method="post">
-                            <div class="form-group row has-feedback">
-                                <label for="newalum_name" class="col-md-2 text-right">Name</label>
-                                <div class="col-md-10">
-                                    <input type="text" class="form-control textarea-drk" id="newalum_name" name="newalum_name" placeholder="Joe Citizen" maxlength="100" required>
-                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="form-group row has-feedback">
-                                <label for="newalum_email" class="col-md-2 text-right">Email</label>
-                                <div class="col-md-10">
-                                    <input type="email" class="form-control textarea-drk" id="newalum_email" name="newalum_email" placeholder="joe@citizen.com" maxlength="100" required>
-                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="form-group row has-feedback">
-                                <label for="newalum_phone" class="col-md-2 text-right">Phone Number</label>
-                                <div class="col-md-10">
-                                    <input type="text" class="form-control textarea-drk" id="newalum_phone" name="newalum_phone" placeholder="123-456-7890" maxlength="100">
-                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="form-group row has-feedback">
-                                <label for="newalum_comp" class="col-md-2 text-right">Company</label>
-                                <div class="col-md-10">
-                                    <input type="text" class="form-control textarea-drk" id="newalum_comp" name="newalum_comp" placeholder="Joe Inc" maxlength="100">
-                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-offset-3 col-md-2">
-                                    <button type="button" class="btn-block btn-sm" data-dismiss="modal">Cancel</button>
-                                </div>
-                                <div class="col-md-offset-1 col-md-1 sub-mob">
-                                    <button type="submit" id="newalumbtn" class="btn-block btn-sm">Add</button>
                                 </div>
                             </div>
                         </form>
