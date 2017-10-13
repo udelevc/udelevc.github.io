@@ -90,7 +90,7 @@ a:link {
 }
 
 a:hover{
-    color: rgb(255,255,26);
+    color: rgb(255,163,26);
 }
 
 .navbar .navbar-brand {
@@ -152,7 +152,7 @@ a:hover{
 }
 
 .navbar .nav > li > a:hover {
-    color: #ffff1a;
+    color: #ffa31a;
 }
 
 .navbar .nav > li > a:focus {
@@ -166,7 +166,7 @@ a:hover{
 
 .navbar-default .navbar-nav > .active > a:hover {
     background-color: rgba(255, 255, 255, 0);
-    color: #ffff1a;
+    color: #ffa31a;
     height: 50px;
 }
 
@@ -220,15 +220,15 @@ a:hover{
 .btn-block:hover {
     background-color: rgba(255, 255, 255, 0.15);
     letter-spacing: 0.3px;
-    box-shadow: 0 0 10px #FFFF00;
-    color: rgb(255,255,26);
+    box-shadow: 0 0 10px #ffa31a;
+    color: rgb(255,163,26);
 }
 
 .btn-block-pulse {
     background-color: rgba(255, 255, 255, 0.15);
     border-color: #F51DBF;
     letter-spacing: 0.3px;
-    box-shadow: 0 0 10px #F51DBF;
+    box-shadow: 0 0 15px #F51DBF;
     color: #F51DBF;
     transition: border-color .4s ease-in-out, background-color .4s ease-in-out, color .4s ease-in-out, box-shadow .4s ease-in-out, letter-spacing 0.4s ease-in-out;
     -moz-transition: border-color .4s ease-in-out, background-color .4s ease-in-out, color .4s ease-in-out, box-shadow .4s ease-in-out, letter-spacing 0.4s ease-in-out;
