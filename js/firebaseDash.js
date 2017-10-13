@@ -202,7 +202,6 @@ jQuery(document).ready(function ($) {
           if (user) {
             // User is signed in.
               populateInventory();
-              populateAlums();
           } else {
           // User is signed out.
           window.location.replace("../signin/");
