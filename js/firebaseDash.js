@@ -273,7 +273,7 @@ jQuery(document).ready(function ($) {
           if (($('#partsbtn').hasClass('disabled'))) {
           } else {
             var data = getFormData();
-            var url = 'https://script.google.com/macros/u/1/s/AKfycbyjVbMBSIM5tjnL6fWu-ItWe4t0FU-P9vdlaT8k0N6oob9xhJU/exec'
+            var url = 'https://script.google.com/a/udel.edu/macros/s/AKfycbyURk7IhKV40IwjvDWq5r4ZZDZAjDbCtUaMatMuVzk_zzMVhM6O/exec';
             var xhr = new XMLHttpRequest();
             xhr.open('POST', url);
             // xhr.withCredentials = true;

@@ -1,445 +1,488 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Rooster Racing</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="description" content="Rooster Racing - Formula SAE at the University of Delaware">
-    <!-- Add Favicon -->
-    <link rel="shortcut icon" href="../favicon.ico">
-    <!-- Most Recent Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <!-- Most Recent Font Awesome -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Simple Sidebar CSS-->
-    <link rel="stylesheet" href="../css/simple-sidebar.css">
-    <!-- Custom CSS -->
-    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400|Source+Sans+Pro:200,300,400,600,700|Oswald:400,300,700|Economica:400,700,400italic|Ubuntu:300,400,500,700,300italic,400italic|Titillium+Web:200,300,600,400' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="../css/style.css">
-    <!-- Most Recent JQuery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <!-- Most Recent Bootsrap -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <!-- Easing plugin for JQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <!-- Validator plugin for JQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
-    <!-- Fade plugin for JQuery -->
-    <script src="../js/jquery.fadethis.js"></script>
-    <!-- ListJS -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-    <!-- Firebase Setup -->
-    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyBgHLjlqG1ONU5d-bkJONdbaYoPqP-_gbo",
-            authDomain: "evc-website.firebaseapp.com",
-            databaseURL: "https://evc-website.firebaseio.com",
-            projectId: "evc-website",
-            storageBucket: "",
-            messagingSenderId: "844746678043"
-        };
-        firebase.initializeApp(config);
-    </script>
-    <!-- Custom JS -->
-    <script src="../js/main.js"></script>
-    <script src="../js/firebaseDash.js"></script>
-</head>
+    <head>
+        <title>Rooster Racing</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="description" content="Rooster Racing - Formula SAE at the University of Delaware">
+        <!-- Add Favicon -->
+        <link rel="shortcut icon" href="../favicon.ico">
+        <!-- Most Recent Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <!-- Most Recent Font Awesome -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <!-- Simple Sidebar CSS-->
+        <link rel="stylesheet" href="../css/simple-sidebar.css">
+        <!-- Custom CSS -->
+        <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400|Source+Sans+Pro:200,300,400,600,700|Oswald:400,300,700|Economica:400,700,400italic|Ubuntu:300,400,500,700,300italic,400italic|Titillium+Web:200,300,600,400' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../css/style.css">
+        <!-- Most Recent JQuery -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <!-- Most Recent Bootsrap -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <!-- Easing plugin for JQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <!-- Validator plugin for JQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+        <!-- Fade plugin for JQuery -->
+        <script src="../js/jquery.fadethis.js"></script>
+        <!-- ListJS -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+        <!-- Firebase Setup -->
+        <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyBgHLjlqG1ONU5d-bkJONdbaYoPqP-_gbo",
+                authDomain: "evc-website.firebaseapp.com",
+                databaseURL: "https://evc-website.firebaseio.com",
+                projectId: "evc-website",
+                storageBucket: "",
+                messagingSenderId: "844746678043"
+            };
+            firebase.initializeApp(config);
+        </script>
+        <!-- Custom JS -->
+        <script src="../js/main.js"></script>
+        <script src="../js/firebaseDash.js"></script>
+    </head>
 
-<body>
+    <body>
 
-    <div id="wrapper">
+        <div id="wrapper">
 
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="../">
-                        Rooster Racing
-                    </a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#dash">Inventory</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#purchase">Purchase Request</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#acc">Account Settings</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#contact">Contact</a>
-                </li>
-                <li>
-                    <a data-toggle="modal" data-target="#help">Help</a>
-                </li>
-                <li id="signOut">
-                    <a href="#">Sign Out</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <!-- User Dash Content -->
-            <section id="dash" class="container content-section trans-section text-center mob-dash-sec" style="position: relative;padding-top: 55px;padding-left: 50px;">
-                <h2 class="text-left">Inventory</h2>
-                <div class="line-alt"></div>
-                <a href="#menu-toggle" class="btn-collapse" id="menu-toggle"><i class="fa fa-2x fa-bars" aria-hidden="true"></i></a>
-                <br><br>
-                <div class="row">
-                    <div id="parts" class="col-md-12 table-responsive" style="padding: 0px 0px 0px 0px;border:none;">
-                        <input class="search" placeholder="Search" />
-                        <table class="table-fill" id="partsTable">
-                            <thead>
-                                <tr>
-                                    <th class="text-left" style="width:10%"><button class="sort" data-sort="part_num">Pa&#8203;rt #</button></th>
-                                    <th class="text-left"><button class="sort" data-sort="part_name">Part Name</button></th>
-                                    <th class="text-left" style="width:10%"><button class="sort" data-sort="part_quant">#</button></th>
-                                    <th class="text-left"><button class="sort" style="width:85%" data-sort="part_status">Status</button><a class="btn-add" style="float: right;" ><i class="fa fa-plus-square-o" aria-hidden="true"></i></a></th>
-                                </tr>
-                            </thead>
-                            <tbody class="list table-hover" id="partsBody">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-offset-10 col-md-1 text-right">
-                    </div>
-                </div>
-            </section>
-            <!-- Purchase Request Content -->
-            <section id="purchase" class="container content-section inverse-section text-center mob-dash-sec" style="position: relative;padding-top: 55px;padding-left: 50px;">
-                <h2 class="text-left">Purchase Request</h2>
-                <div class="line-alt"></div>
-                <br><br>
-                <div class="row">
-                    <div class="col-md-offset-1 col-md-10">
-                        <center>
-                            <div id="parts_placeholder"></div>
-                            <form id="new_parts" name="new_parts" data-toggle="validator" data-focus="false" method="post">
-                                <div class="form-group row has-feedback">
-                                    <label for="part_name" class="col-md-2 text-right">Item Name</label>
-                                    <div class="col-md-10">
-                                        <input type="text" class="form-control textarea-drk" id="part_name" name="part_name" placeholder="e.g. Steel Hex Head Screw, 10-24 Thread, 1/4 inch long" data-minlength="5" data-error="Please enter more than 5 letters" required>
-                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                        <div class="help-block with-errors text-left"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group row has-feedback">
-                                    <label for="part_price" class="col-md-2 text-right">Item Price ($)</label>
-                                    <div class="col-md-10">
-                                        <input type="number" step="0.01" class="form-control textarea-drk" id="part_price" name="part_price" data-error="Please enter a price" required>
-                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                        <div class="help-block with-errors text-left"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group row has-feedback">
-                                    <label for="part_seller" class="col-md-2 text-right">Merchant (give URLs if possible)</label>
-                                    <div class="col-md-10">
-                                        <input type="text" class="form-control textarea-drk" id="part_seller" name="part_seller" placeholder="e.g. https://www.mcmaster.com/#92314a239/=17d9n3i" data-minlength="5" data-error="Please enter more than 5 letters" required>
-                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                        <div class="help-block with-errors text-left"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group row has-feedback">
-                                    <label for="part_comp1" class="col-md-2 text-right">Comparison 1 (required)</label>
-                                    <div class="col-md-10">
-                                        <input type="text" class="form-control textarea-drk" id="part_comp1" name="part_comp1" placeholder="e.g. https://www.fastenal.com/products/details/1170055" data-minlength="5" data-error="Please enter more than 5 letters" required>
-                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                        <div class="help-block with-errors text-left"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group row has-feedback">
-                                    <label for="part_comp2" class="col-md-2 text-right">Comparison 2 (Please, but not required)</label>
-                                    <div class="col-md-10">
-                                        <input type="text" class="form-control textarea-drk" id="part_comp2" name="part_comp2" placeholder="e.g. https://www.boltdepot.com/Product-Details.aspx?product=8972" data-minlength="5" data-error="Please enter more than 5 letters">
-                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                        <div class="help-block with-errors text-left"></div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-offset-2 col-md-1">
-                                        <button type="submit" class="btn-block btn-sm" id="partsbtn">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <br>
-                        </center>
-                    </div>
-                </div>
-            </section>
-            <!-- Account Info Content -->
-            <section id="acc" class="container content-section trans-section text-center mob-dash-sec" style="position: relative;padding-top: 55px;padding-left: 50px;">
-                <h2 class="text-left">Account Settings</h2>
-                <div class="line-alt"></div>
-                <br><br>
-                <div class="row">
-                    <div id = "alert_placeholder"></div>
-                    <div class="col-md-offset-1 col-md-10">
-                        <center>
-                            <form id="acc_info1" name="acc_info1" data-toggle="validator" data-focus="false" method="post">
-                                <div class="form-group row has-feedback">
-                                    <label for="acc_mail" class="col-md-2 text-right">Email Address</label>
-                                    <div class="col-md-10">
-                                        <input type="email" class="form-control textarea-drk" id="acc_mail" name="acc_mail" placeholder="Your Email Address" data-minlength="5" maxlength="100" data-error="Please enter a valid email address" required>
-                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                        <div class="help-block with-errors text-left"></div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-offset-2 col-md-1">
-                                        <button type="submit" class="btn-block btn-sm" id="emailbtn">Update</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <br>
-                            <form id="acc_info2" name="acc_info2" data-toggle="validator" data-focus="false" method="post">
-                                <div class="form-group row has-feedback">
-                                    <label for="acc_pass" class="col-md-2 text-right">New Password</label>
-                                    <div class="col-md-10">
-                                        <input type="password" class="form-control textarea-drk" id="acc_pass" name="acc_pass" placeholder="Your New Password" pattern="(?=.*[a-z]).{1,}" data-minlength="8" maxlength="32" data-pattern-error="Password must contain letters" data-error="Password must be 8-32 characters" required>
-                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                        <div class="help-block with-errors text-left"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group row has-feedback">
-                                    <label for="acc_pass2" class="col-md-2 text-right">Confirm New Password</label>
-                                    <div class="col-md-10">
-                                        <input type="password" class="form-control textarea-drk" id="acc_pass2" name="acc_pass2" placeholder="Re-Type Your New Password" data-minlength="12" maxlength="32" data-match="#acc_pass" data-match-error="Passwords don't match" required>
-                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                        <div class="help-block with-errors text-left"></div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-offset-2 col-md-1">
-                                        <button type="submit" class="btn-block btn-sm" id="passbtn">Update</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </center>
-                    </div>
-                </div>
-            </section>
-           <!-- Footer -->
-        <div class="foot" id="contact">
-            <br>
-            <div class="row" id="social">
-                <div class="col-md-offset-5 col-md-1">
-                    <center>
-                        <a href="https://www.facebook.com/UDEVClub/" target="_blank">
-                            <div class="btn-facebook"><i class="fa fa-2x fa-facebook"></i></div>
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="../">
+                            UD EVC
                         </a>
-                    </center>
-                </div>
-                <div class="col-md-1" style="padding-bottom:15px;">
-                    <center>
-                        <a href="mailto:udelevc@gmail.com">
-                            <div class="btn-linked"><i class="fa fa-2x fa-envelope"></i></div>
-                        </a>
-                    </center>
-                </div>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#dash">Inventory</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#purchase">Purchase Request</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#acc">Account Settings</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                    <li>
+                        <a data-toggle="modal" data-target="#help">Help</a>
+                    </li>
+                    <li id="signOut">
+                        <a href="#">Sign Out</a>
+                    </li>
+                </ul>
             </div>
-            <div class="row">
-                <div class="col-md-offset-1 col-md-3" style="margin-top: -7px;">
-                    <p style="font-size: 1.2em;" class="team-ti">ADDRESS:</p>
-                    <p style="font-size: 1.2em;" class="team-ti">Spencer Laboratory
-                    <br>130 Academy St
-                    <br>Newark, DE 19716</p>
-                </div>
-                <div class="col-md-4 text-center" style="padding-top: 50px;">
-                    <div class="line"></div>
+            <!-- /#sidebar-wrapper -->
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <!-- User Dash Content -->
+                <section id="dash" class="container content-section trans-section text-center mob-dash-sec" style="position: relative;padding-top: 55px;padding-left: 50px;">
+                    <h2 class="text-left">Inventory</h2>
+                    <button id="btn" onclick="changeCamera()">Switch Cameras</button>
+                    <p id="out"></p>
+                    <video id="preview"></video>
+                    <script type="text/javascript">
+                        let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+                        var current_camera = 0;
+                        scanner.addListener('scan', function (content) {
+                            var out = document.getElementById('out');
+                            out.textContent = content;
+                        });
+                        Instascan.Camera.getCameras().then(function (cameras) {
+                            if (cameras.length > 0) {
+                                scanner.start(cameras[0]);
+                                if(cameras.length < 2){
+                                    var btn = document.getElementById('btn');
+                                    btn.style.display = 'none';
+                                }
+                            } else {
+                                console.error('No cameras found.');
+                            }
+                        }).catch(function (e) {
+                            console.error(e);
+                        });
+                        function changeCamera(){
+                            scanner.stop();
+                            Instascan.Camera.getCameras().then(function (cameras) {
+                                if (cameras.length > 1) {
+                                    if(current_camera = 0){
+                                        current_camera = 1;
+                                        scanner.start(cameras[1]);
+                                    }
+                                    else{
+                                        current_camera = 0;
+                                        scanner.start(cameras[0]); 
+                                    }
+                                } else {
+                                    console.error('No cameras found.');
+                                }
+                            }).catch(function (e) {
+                                console.error(e);
+                            });
+                        }
+                    </script>
+                    <div class="line-alt"></div>
+                    <a href="#menu-toggle" class="btn-collapse" id="menu-toggle"><i class="fa fa-2x fa-bars" aria-hidden="true"></i></a>
+                    <br><br>
+                    <div class="row">
+                        <div id="parts" class="col-md-12 table-responsive" style="padding: 0px 0px 0px 0px;border:none;">
+                            <input class="search" placeholder="Search" />
+                            <table class="table-fill" id="partsTable">
+                                <thead>
+                                    <tr>
+                                        <th class="text-left" style="width:10%"><button class="sort" data-sort="part_num">Pa&#8203;rt #</button></th>
+                                        <th class="text-left"><button class="sort" data-sort="part_name">Part Name</button></th>
+                                        <th class="text-left" style="width:10%"><button class="sort" data-sort="part_quant">#</button></th>
+                                        <th class="text-left"><button class="sort" style="width:85%" data-sort="part_status">Status</button><a class="btn-add" style="float: right;" ><i class="fa fa-plus-square-o" aria-hidden="true"></i></a></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="list table-hover" id="partsBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-offset-10 col-md-1 text-right">
+                        </div>
+                    </div>
+                </section>
+                <!-- Purchase Request Content -->
+                <section id="purchase" class="container content-section inverse-section text-center mob-dash-sec" style="position: relative;padding-top: 55px;padding-left: 50px;">
+                    <h2 class="text-left">Purchase Request</h2>
+                    <div class="line-alt"></div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                            <center>
+                                <div id="parts_placeholder"></div>
+                                <form id="new_parts" name="new_parts" data-toggle="validator" data-focus="false" method="post">
+                                    <div class="form-group row has-feedback">
+                                        <label for="part_name" class="col-md-2 text-right">Item Name</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control textarea-drk" id="part_name" name="part_name" placeholder="e.g. Steel Hex Head Screw, 10-24 Thread, 1/4 inch long" data-minlength="5" data-error="Please enter more than 5 letters" required>
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <div class="help-block with-errors text-left"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row has-feedback">
+                                        <label for="part_price" class="col-md-2 text-right">Item Price ($)</label>
+                                        <div class="col-md-10">
+                                            <input type="number" step="0.01" class="form-control textarea-drk" id="part_price" name="part_price" data-error="Please enter a price" required>
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <div class="help-block with-errors text-left"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row has-feedback">
+                                        <label for="part_seller" class="col-md-2 text-right">Merchant (give URLs if possible)</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control textarea-drk" id="part_seller" name="part_seller" placeholder="e.g. https://www.mcmaster.com/#92314a239/=17d9n3i" data-minlength="5" data-error="Please enter more than 5 letters" required>
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <div class="help-block with-errors text-left"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row has-feedback">
+                                        <label for="part_comp1" class="col-md-2 text-right">Comparison 1 (required)</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control textarea-drk" id="part_comp1" name="part_comp1" placeholder="e.g. https://www.fastenal.com/products/details/1170055" data-minlength="5" data-error="Please enter more than 5 letters" required>
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <div class="help-block with-errors text-left"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row has-feedback">
+                                        <label for="part_comp2" class="col-md-2 text-right">Comparison 2 (Please, but not required)</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control textarea-drk" id="part_comp2" name="part_comp2" placeholder="e.g. https://www.boltdepot.com/Product-Details.aspx?product=8972" data-minlength="5" data-error="Please enter more than 5 letters">
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <div class="help-block with-errors text-left"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-offset-2 col-md-1">
+                                            <button type="submit" class="btn-block btn-sm" id="partsbtn">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <br>
+                            </center>
+                        </div>
+                    </div>
+                </section>
+                <!-- Account Info Content -->
+                <section id="acc" class="container content-section trans-section text-center mob-dash-sec" style="position: relative;padding-top: 55px;padding-left: 50px;">
+                    <h2 class="text-left">Account Settings</h2>
+                    <div class="line-alt"></div>
+                    <br><br>
+                    <div class="row">
+                        <div id = "alert_placeholder"></div>
+                        <div class="col-md-offset-1 col-md-10">
+                            <center>
+                                <form id="acc_info1" name="acc_info1" data-toggle="validator" data-focus="false" method="post">
+                                    <div class="form-group row has-feedback">
+                                        <label for="acc_mail" class="col-md-2 text-right">Email Address</label>
+                                        <div class="col-md-10">
+                                            <input type="email" class="form-control textarea-drk" id="acc_mail" name="acc_mail" placeholder="Your Email Address" data-minlength="5" maxlength="100" data-error="Please enter a valid email address" required>
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <div class="help-block with-errors text-left"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-offset-2 col-md-1">
+                                            <button type="submit" class="btn-block btn-sm" id="emailbtn">Update</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <br>
+                                <form id="acc_info2" name="acc_info2" data-toggle="validator" data-focus="false" method="post">
+                                    <div class="form-group row has-feedback">
+                                        <label for="acc_pass" class="col-md-2 text-right">New Password</label>
+                                        <div class="col-md-10">
+                                            <input type="password" class="form-control textarea-drk" id="acc_pass" name="acc_pass" placeholder="Your New Password" pattern="(?=.*[a-z]).{1,}" data-minlength="8" maxlength="32" data-pattern-error="Password must contain letters" data-error="Password must be 8-32 characters" required>
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <div class="help-block with-errors text-left"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row has-feedback">
+                                        <label for="acc_pass2" class="col-md-2 text-right">Confirm New Password</label>
+                                        <div class="col-md-10">
+                                            <input type="password" class="form-control textarea-drk" id="acc_pass2" name="acc_pass2" placeholder="Re-Type Your New Password" data-minlength="12" maxlength="32" data-match="#acc_pass" data-match-error="Passwords don't match" required>
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <div class="help-block with-errors text-left"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-offset-2 col-md-1">
+                                            <button type="submit" class="btn-block btn-sm" id="passbtn">Update</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </center>
+                        </div>
+                    </div>
+                </section>
+                <!-- Footer -->
+                <div class="foot" id="contact">
                     <br>
-                    <p class="text-center" id="foot-date2"></p>
-                </div>
-            </div>
-        </div>
-    <!-- End Page Content -->
-        <!-- Begin Modal Content -->
-        <div class="modal fade" id="editPart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-md">
-                <div class="modal-content form-sq">
-                    <div class="modal-header" style="border-bottom: none;">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff;" aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 id="checkPartLabel"></h4>
-                    </div>
-                    <div class="line"></div>
-                    <br>
-                    <div class="modal-body">
-                        <div class="row" id="formout" style="display:none;">
-                            <p id="form-output" style="color:green;text-align:center;"></p>
+                    <div class="row" id="social">
+                        <div class="col-md-offset-5 col-md-1">
+                            <center>
+                                <a href="https://www.facebook.com/UDEVClub/" target="_blank">
+                                    <div class="btn-facebook"><i class="fa fa-2x fa-facebook"></i></div>
+                                </a>
+                            </center>
                         </div>
-                        <div class="row">
-                            <p id="checkpart_num" style="text-align:center;"></p>
-                        </div>
-                        <div class="row">
-                            <p id="checkpart_name" style="text-align:center;"></p>
-                        </div>
-                        <br>
-                        <form id="checkoutpart_form" name="checkout_form" data-toggle="validator" data-focus="false" method="post">
-                            <div class="form-group row has-feedback">
-                                <label for="checkoutpart_quant" class="col-md-5 text-right" style="font-size:1.3em;">Check out quantity: </label>
-                                <div class="form-group col-md-4 has-feedback">
-                                    <input type="number" class="form-control textarea-drk" id="checkoutpart_quant" name="checkoutpart_quant" value="1" max="1" min="0" data-error="Please enter a valid quantity" required>
-                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                    <div class="help-block with-errors text-left"></div>
-                                </div>
-                                <div class="col-md-1 sub-mob">
-                                    <button type="submit" id="checkoutbtn" class="btn-block btn-sm">Check Out</button>
-                                </div>
-                            </div>                        
-                        </form>
-                        <form id="checkinpart_form" name="checkinpart_form" data-toggle="validator" data-focus="false" method="post">
-                            <div class="form-group row has-feedback">
-                                <label for="checkinpart_quant" class="col-md-5 text-right" style="font-size:1.3em;">Check in quantity: </label>
-                                <div class="form-group col-md-4 has-feedback">
-                                    <input type="number" class="form-control textarea-drk" id="checkinpart_quant" name="checkinpart_quant" value="1" max="10000" min="0" data-error="Please enter a valid quantity" required>
-                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                    <div class="help-block with-errors text-left"></div>
-                                </div>
-                                <div class="col-md-1 sub-mob">
-                                    <button type="submit" id="checkinbtn" class="btn-block btn-sm">Check In</button>
-                                </div>
-                            </div>
-                        </form> 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Modal Content -->
-        <!-- Begin Modal Content -->
-        <div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content form-sq">
-                    <div class="modal-header" style="border-bottom: none;">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff;" aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 id="myModalLabel">Help</h4>
-                    </div>
-                    <div class="line"></div>
-                    <br>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <h5 class="text-left">Checking out a part:</h5>
-                            </div>
-                            <div class="col-md-9">
-                                <h5 class="text-left">Click or tap on the part in the table, enter the quantity being checked out in the popup, and click or tap "check out". The table will update as soon as your request is processed</h5>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <h5 class="text-left">Checking a part back in:</h5>
-                            </div>
-                            <div class="col-md-9">
-                                <h5 class="text-left">Click or tap on the part in the table, enter the quantity being checked back in in the popup, and click or tap "check in". The table will update as soon as your request is processed</h5>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <h5 class="text-left">Sorting the tables:</h5>
-                            </div>
-                            <div class="col-md-9">
-                                <h5 class="text-left">Click or tap on the header of any column, to sort the table by that column in descending order, click or tap again for ascending order</h5>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <h5 class="text-left">Making a purchase request:</h5>
-                            </div>
-                            <div class="col-md-9">
-                                <h5 class="text-left">Fill out the form, and hit submit. It may take a second, and then you will see a popup telling you if it succeded or failed</h5>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h5 class="text-center">If you have any other questions, or have any problems, email <a href="mailto:me@theofleck.com">me@theofleck.com</a></h5>
-                            </div>
+                        <div class="col-md-1" style="padding-bottom:15px;">
+                            <center>
+                                <a href="mailto:udelevc@gmail.com">
+                                    <div class="btn-linked"><i class="fa fa-2x fa-envelope"></i></div>
+                                </a>
+                            </center>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Modal Content -->
-         <!-- Begin Modal Content -->
-       <div class="modal fade" id="newpart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-md">
-                <div class="modal-content form-sq">
-                    <div class="modal-header" style="border-bottom: none;">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff;" aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 id="myModalLabel">Add an Inventory Item</h4>
-                    </div>
-                    <div class="line"></div>
-                    <br>
-                    <div class="modal-body">
-                        <form id="newpart_form" name="newpart_form" data-toggle="validator" method="post">
-                            <div class="form-group row has-feedback">
-                                <label for="newpart_name" class="col-md-2 text-right">Part Name</label>
-                                <div class="col-md-10">
-                                    <input type="text" class="form-control textarea-drk" id="newpart_name" name="newpart_name" placeholder="Tube bender" maxlength="100" required>
-                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-3" style="margin-top: -7px;">
+                            <p style="font-size: 1.2em;" class="team-ti">ADDRESS:</p>
+                            <p style="font-size: 1.2em;" class="team-ti">Spencer Laboratory
+                                <br>130 Academy St
+                                <br>Newark, DE 19716</p>
+                        </div>
+                        <div class="col-md-4 text-center" style="padding-top: 50px;">
+                            <div class="line"></div>
                             <br>
-                            <div class="form-group row has-feedback">
-                                <label for="newpart_quant" class="col-md-2 text-right">Quanity</label>
-                                <div class="col-md-3">
-                                    <input type="number" class="form-control textarea-drk" id="newpart_quant" name="newpart_quant" placeholder="" value="1" max="1000" min="1" data-error="Must be 1-1000" required>
-                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                    <div class="help-block with-errors text-left"></div>
-                                </div>
-                                <label for="newpart_consum" class="col-md-2 text-right">Consumable</label>
-                                <div class="col-md-1">
-                                    <input type="checkbox" name="newpart_consum" id="newpart_consum" checked/>
-                                </div>
-                                <label for="newpart_num" class="col-md-1 text-right">#</label>
-                                <div class="col-md-3">
-                                    <input type="number" class="form-control textarea-drk" id="newpart_num" name="newpart_num" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-offset-3 col-md-2">
-                                    <button type="button" class="btn-block btn-sm" data-dismiss="modal">Cancel</button>
-                                </div>
-                                <div class="col-md-offset-1 col-md-1 sub-mob">
-                                    <button type="submit" id="newpartbtn" class="btn-block btn-sm">Add</button>
-                                </div>
-                            </div>
-                        </form>
+                            <p class="text-center" id="foot-date2"></p>
+                        </div>
                     </div>
                 </div>
+                <!-- End Page Content -->
+                <!-- Begin Modal Content -->
+                <div class="modal fade" id="editPart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-md">
+                        <div class="modal-content form-sq">
+                            <div class="modal-header" style="border-bottom: none;">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff;" aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 id="checkPartLabel"></h4>
+                            </div>
+                            <div class="line"></div>
+                            <br>
+                            <div class="modal-body">
+                                <div class="row" id="formout" style="display:none;">
+                                    <p id="form-output" style="color:green;text-align:center;"></p>
+                                </div>
+                                <div class="row">
+                                    <p id="checkpart_num" style="text-align:center;"></p>
+                                </div>
+                                <div class="row">
+                                    <p id="checkpart_name" style="text-align:center;"></p>
+                                </div>
+                                <br>
+                                <form id="checkoutpart_form" name="checkout_form" data-toggle="validator" data-focus="false" method="post">
+                                    <div class="form-group row has-feedback">
+                                        <label for="checkoutpart_quant" class="col-md-5 text-right" style="font-size:1.3em;">Check out quantity: </label>
+                                        <div class="form-group col-md-4 has-feedback">
+                                            <input type="number" class="form-control textarea-drk" id="checkoutpart_quant" name="checkoutpart_quant" value="1" max="1" min="0" data-error="Please enter a valid quantity" required>
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <div class="help-block with-errors text-left"></div>
+                                        </div>
+                                        <div class="col-md-1 sub-mob">
+                                            <button type="submit" id="checkoutbtn" class="btn-block btn-sm">Check Out</button>
+                                        </div>
+                                    </div>                        
+                                </form>
+                                <form id="checkinpart_form" name="checkinpart_form" data-toggle="validator" data-focus="false" method="post">
+                                    <div class="form-group row has-feedback">
+                                        <label for="checkinpart_quant" class="col-md-5 text-right" style="font-size:1.3em;">Check in quantity: </label>
+                                        <div class="form-group col-md-4 has-feedback">
+                                            <input type="number" class="form-control textarea-drk" id="checkinpart_quant" name="checkinpart_quant" value="1" max="10000" min="0" data-error="Please enter a valid quantity" required>
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <div class="help-block with-errors text-left"></div>
+                                        </div>
+                                        <div class="col-md-1 sub-mob">
+                                            <button type="submit" id="checkinbtn" class="btn-block btn-sm">Check In</button>
+                                        </div>
+                                    </div>
+                                </form> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal Content -->
+                <!-- Begin Modal Content -->
+                <div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content form-sq">
+                            <div class="modal-header" style="border-bottom: none;">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff;" aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 id="myModalLabel">Help</h4>
+                            </div>
+                            <div class="line"></div>
+                            <br>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h5 class="text-left">Checking out a part:</h5>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <h5 class="text-left">Click or tap on the part in the table, enter the quantity being checked out in the popup, and click or tap "check out". The table will update as soon as your request is processed</h5>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h5 class="text-left">Checking a part back in:</h5>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <h5 class="text-left">Click or tap on the part in the table, enter the quantity being checked back in in the popup, and click or tap "check in". The table will update as soon as your request is processed</h5>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h5 class="text-left">Sorting the tables:</h5>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <h5 class="text-left">Click or tap on the header of any column, to sort the table by that column in descending order, click or tap again for ascending order</h5>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h5 class="text-left">Making a purchase request:</h5>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <h5 class="text-left">Fill out the form, and hit submit. It may take a second, and then you will see a popup telling you if it succeded or failed</h5>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="text-center">If you have any other questions, or have any problems, email <a href="mailto:me@theofleck.com">me@theofleck.com</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal Content -->
+                <!-- Begin Modal Content -->
+                <div class="modal fade" id="newpart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-md">
+                        <div class="modal-content form-sq">
+                            <div class="modal-header" style="border-bottom: none;">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff;" aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 id="myModalLabel">Add an Inventory Item</h4>
+                            </div>
+                            <div class="line"></div>
+                            <br>
+                            <div class="modal-body">
+                                <form id="newpart_form" name="newpart_form" data-toggle="validator" method="post">
+                                    <div class="form-group row has-feedback">
+                                        <label for="newpart_name" class="col-md-2 text-right">Part Name</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control textarea-drk" id="newpart_name" name="newpart_name" placeholder="Tube bender" maxlength="100" required>
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="form-group row has-feedback">
+                                        <label for="newpart_quant" class="col-md-2 text-right">Quanity</label>
+                                        <div class="col-md-3">
+                                            <input type="number" class="form-control textarea-drk" id="newpart_quant" name="newpart_quant" placeholder="" value="1" max="1000" min="1" data-error="Must be 1-1000" required>
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <div class="help-block with-errors text-left"></div>
+                                        </div>
+                                        <label for="newpart_consum" class="col-md-2 text-right">Consumable</label>
+                                        <div class="col-md-1">
+                                            <input type="checkbox" name="newpart_consum" id="newpart_consum" checked/>
+                                        </div>
+                                        <label for="newpart_num" class="col-md-1 text-right">#</label>
+                                        <div class="col-md-3">
+                                            <input type="number" class="form-control textarea-drk" id="newpart_num" name="newpart_num" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-2">
+                                            <button type="button" class="btn-block btn-sm" data-dismiss="modal">Cancel</button>
+                                        </div>
+                                        <div class="col-md-offset-1 col-md-1 sub-mob">
+                                            <button type="submit" id="newpartbtn" class="btn-block btn-sm">Add</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal Content -->
             </div>
-        </div>
-        <!-- End Modal Content -->
-    </div>
-    <!-- /#wrapper -->
-    <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
-    <script>
-        /*
+            <!-- /#wrapper -->
+            <!-- Menu Toggle Script -->
+            <script>
+                $("#menu-toggle").click(function(e) {
+                    e.preventDefault();
+                    $("#wrapper").toggleClass("toggled");
+                });
+            </script>
+            <script>
+                /*
         var options1 = {
             valueNames: [ 'part-name', 'part-num', 'part-quant', 'part-status' ]
         };
@@ -449,7 +492,7 @@
         };
         var alumList = new List('alums', options2);
         */
-    </script>
-</body>
+            </script>
+            </body>
 
-</html>
+        </html>
