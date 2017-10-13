@@ -374,6 +374,8 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
         let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
         Instascan.Camera.getCameras().then(function (cameras) {
+            var out = document.getElementById('out');
+            out.textContent = "switched";
             if (cameras.length > 1) {
                 scanner.start(cameras[1];  
             } else {
