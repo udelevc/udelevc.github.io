@@ -1,5 +1,6 @@
 jQuery(document).ready(function ($) {
     initApp();
+    var scanner;
     var options1 = {
         valueNames: [ 'part_num', 'part_name', 'part_quant', 'part_status' ],
         item: '<tr><td class="part_num"></td><td class="part_name"></td><td class="part_quant"></td><td class="part_status"><i class="fa fa-check" style="color:green" aria-hidden="true"></i></td></tr>'
@@ -350,7 +351,7 @@ jQuery(document).ready(function ($) {
     $("#qr_button").click(function(e) {
         e.preventDefault();
         $('#scanPart').modal('toggle');
-        let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+        scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
         scanner.addListener('scan', function (content) {
             var out = document.getElementById('out');
             out.textContent = content;
@@ -374,7 +375,7 @@ jQuery(document).ready(function ($) {
     });
     $("#change_camera").click(function(e) {
         e.preventDefault();
-        let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+        scanner.stop();
         Instascan.Camera.getCameras().then(function (cameras) {
             var out = document.getElementById('out');
             out.textContent = "switched";
