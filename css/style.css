@@ -343,8 +343,8 @@ a:hover{
 .btn-insta:hover,
 .btn-twitter:hover,
 .btn-facebook:hover {
-    border: solid thin #ffff66;
-    color: #ffff66;
+    border: solid thin #ffa31a;
+    color: #ffa31a;
     transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
@@ -359,7 +359,7 @@ a:hover{
 }
 
 .back-box {
-    background-color: rgba(0, 77, 153,0.3);
+    background-color: rgba(0, 77, 153,0.4);
     padding-bottom: 50px;
     padding-top:65px;
     min-height: 30vh;
@@ -493,7 +493,7 @@ form div div .form-control {
 }
 
 .trans-section {
-    background: url(../img/top_right.svg) repeat left bottom, rgba(0, 77, 153,0.3);
+    background: url(../img/top_right.svg) repeat left bottom, rgba(0, 77, 153,0.4);
     box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
     color: #aaa;
 }
@@ -730,7 +730,7 @@ form div div .form-control {
 }
 
 .circ-mail:hover{
-    color:  #ffff66 !important;
+    color:  #ffa31a !important;
     transition: color .3s ease-in-out;
     -moz-transition: color .3s ease-in-out;
     -webkit-transition: color .3s ease-in-out;
@@ -878,9 +878,6 @@ form div div .form-control {
     transition: all 0.3s ease-in-out;
 }
 
-#sign-in-nav:hover {
-    color: #ffff1a;
-}
 
 @media only screen and (min-width: 768px) {
     .cd-top {
