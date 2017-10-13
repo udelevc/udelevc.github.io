@@ -15,7 +15,7 @@ jQuery(document).ready(function ($) {
         var newnum = 0;
         $('td', tr).each(function(i, td){
             if(td.cellIndex == 0 && parseInt($(td).text()) > newnum){
-               newnum  = parseInt($(td).text());
+                newnum  = parseInt($(td).text());
             }
         });
         newnum++;
@@ -35,10 +35,10 @@ jQuery(document).ready(function ($) {
                 newconsum = true;
             }
             firebase.database().ref('inventory/'+$newpart_num).set({
-                    partname:$newpart_name,
-                    partquant:$newpart_quant,
-                    partconsum:newconsum,
-                    partstatus:"Available"
+                partname:$newpart_name,
+                partquant:$newpart_quant,
+                partconsum:newconsum,
+                partstatus:"Available"
             });
             populateInventory();
             $('#newpart').modal('toggle');
@@ -80,10 +80,10 @@ jQuery(document).ready(function ($) {
                         $checkoutpart_status = "Checked out by "+user.displayName;
                         $checkoutpart_name = $checkoutpart_name.substr(11);
                         firebase.database().ref('inventory/'+$checkoutpart_num).set({
-                                partname:$checkoutpart_name,
-                                partquant:partquant,
-                                partconsum:checkoutpart_consum,
-                                partstatus:$checkoutpart_status
+                            partname:$checkoutpart_name,
+                            partquant:partquant,
+                            partconsum:checkoutpart_consum,
+                            partstatus:$checkoutpart_status
                         }).then(function(){
                             populateInventory();
                             $('#checkoutpart_form')[0].reset();
@@ -134,14 +134,14 @@ jQuery(document).ready(function ($) {
                     $checkinpart_status = "Unavailable";
                 }
                 else{
-                   $checkinpart_status = "Checked out by "+user.displayName; 
+                    $checkinpart_status = "Checked out by "+user.displayName; 
                 }
                 $checkinpart_name = $checkinpart_name.substr(11);
                 firebase.database().ref('inventory/'+$checkinpart_num).set({
-                        partname:$checkinpart_name,
-                        partquant:partquant,
-                        partconsum:checkinpart_consum,
-                        partstatus:$checkinpart_status
+                    partname:$checkinpart_name,
+                    partquant:partquant,
+                    partconsum:checkinpart_consum,
+                    partstatus:$checkinpart_status
                 }).then(function(){
                     populateInventory();
                     $('#checkinpart_form')[0].reset();
@@ -157,37 +157,37 @@ jQuery(document).ready(function ($) {
             $email = document.getElementById("acc_mail").value;
             var user = firebase.auth().currentUser;
             user.updateEmail($email).then(function() {
-                    document.getElementById("acc_info1").reset();
-                    makeAlert("Successfully changed email");
-                }, function(error) {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    if (errorCode == 'auth/invalid-email') {
-                        makeError("Invalid email address");
-                    }
-                    console.log(errorCode);
-                    console.log(errorMessage);
-                });
+                document.getElementById("acc_info1").reset();
+                makeAlert("Successfully changed email");
+            }, function(error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                if (errorCode == 'auth/invalid-email') {
+                    makeError("Invalid email address");
+                }
+                console.log(errorCode);
+                console.log(errorMessage);
+            });
         }
     });
-     $('#acc_info2').validator().submit(function (e) {
-         e.preventDefault();
-         if (($('#passbtn').hasClass('disabled'))) {
+    $('#acc_info2').validator().submit(function (e) {
+        e.preventDefault();
+        if (($('#passbtn').hasClass('disabled'))) {
         } else {
-             $pass = document.getElementById("acc_pass").value;
-             var user = firebase.auth().currentUser;
-             user.updatePassword($pass).then(function() {
-                  document.getElementById("acc_info2").reset();
-                  makeAlert("Successfully changed password");
-                }, function(error) {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    if (errorCode == 'auth/weak-password') {
-                        makeError("Please use a stronger password")
-                    }
-                    console.log(errorCode);
-                    console.log(errorMessage);
-                });
+            $pass = document.getElementById("acc_pass").value;
+            var user = firebase.auth().currentUser;
+            user.updatePassword($pass).then(function() {
+                document.getElementById("acc_info2").reset();
+                makeAlert("Successfully changed password");
+            }, function(error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                if (errorCode == 'auth/weak-password') {
+                    makeError("Please use a stronger password")
+                }
+                console.log(errorCode);
+                console.log(errorMessage);
+            });
         }
     });
     function makeAlert(message){
@@ -197,23 +197,23 @@ jQuery(document).ready(function ($) {
         $('#alert_placeholder').hide().html('<div class="alert alert-danger alert-dismissable fade-alert" style="color: #b30000" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span>'+message+'</span></div>').fadeIn(800);
     }
     function initApp() {
-      // Listening for auth state changes.
+        // Listening for auth state changes.
         firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            // User is signed in.
-              populateInventory();
-          } else {
-          // User is signed out.
-          window.location.replace("../signin/");
-        }
+            if (user) {
+                // User is signed in.
+                populateInventory();
+            } else {
+                // User is signed out.
+                window.location.replace("../signin/");
+            }
         });
     };
     $("#signOut a").click(function() {
-       firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            firebase.auth().signOut();
-            window.location.replace("../signin/");
-          }
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                firebase.auth().signOut();
+                window.location.replace("../signin/");
+            }
         });
     });
     function populateInventory(){
@@ -246,7 +246,7 @@ jQuery(document).ready(function ($) {
         var num = "";
         $('td', tr).each(function(i, td){
             if(td.cellIndex == 0){
-               $("#checkpart_num").html("Part Number: "+$(td).text());
+                $("#checkpart_num").html("Part Number: "+$(td).text());
             }
             else if(td.cellIndex == 1){
                 $("#checkpart_name").html("Part Name: "+$(td).text());
@@ -269,9 +269,9 @@ jQuery(document).ready(function ($) {
         }
     });
     $('#new_parts').validator().submit(function (e) {
-          e.preventDefault();
-          if (($('#partsbtn').hasClass('disabled'))) {
-          } else {
+        e.preventDefault();
+        if (($('#partsbtn').hasClass('disabled'))) {
+        } else {
             var data = getFormData();
             var url = 'https://script.google.com/a/udel.edu/macros/s/AKfycbyURk7IhKV40IwjvDWq5r4ZZDZAjDbCtUaMatMuVzk_zzMVhM6O/exec';
             var xhr = new XMLHttpRequest();
@@ -285,7 +285,7 @@ jQuery(document).ready(function ($) {
                     formOutput("Success! Someone will email you back as soon as possible");
                 }
                 else{
-                   formOutput("Submission failed, try reloading the page, or email me@theofleck.com"); 
+                    formOutput("Submission failed, try reloading the page, or email me@theofleck.com"); 
                 }
                 //document.getElementById('new_parts').style.display = 'none'; // hide form
                 //document.getElementById('thankyou_message').style.display = 'block';
@@ -296,55 +296,99 @@ jQuery(document).ready(function ($) {
                 return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
             }).join('&')
             xhr.send(encoded);
-          }
-        });
-    
+        }
+    });
+
     function validEmail(email) { // see:
-      var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-      return re.test(email);
+        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        return re.test(email);
     }
     // get all data in form and return object
     function getFormData() {
-      var elements = document.getElementById("new_parts").elements; // all form elements
-      var fields = Object.keys(elements).map(function(k) {
-        if(elements[k].name !== undefined) {
-          return elements[k].name;
-        // special case for Edge's html collection
-        }else if(elements[k].length > 0){
-          return elements[k].item(0).name;
-        }
-      }).filter(function(item, pos, self) {
-        return self.indexOf(item) == pos && item;
-      });
-      var data = {};
-      fields.forEach(function(k){
-        data[k] = elements[k].value;
-        var str = ""; // declare empty string outside of loop to allow
-                      // it to be appended to for each item in the loop
-        if(elements[k].type === "checkbox"){ // special case for Edge's html collection
-          str = str + elements[k].checked + ", "; // take the string and append 
-                                                  // the current checked value to 
-                                                  // the end of it, along with 
-                                                  // a comma and a space
-          data[k] = str.slice(0, -2); // remove the last comma and space 
-                                      // from the  string to make the output 
-                                      // prettier in the spreadsheet
-        }else if(elements[k].length){
-          for(var i = 0; i < elements[k].length; i++){
-            if(elements[k].item(i).checked){
-              str = str + elements[k].item(i).value + ", "; // same as above
-              data[k] = str.slice(0, -2);
+        var elements = document.getElementById("new_parts").elements; // all form elements
+        var fields = Object.keys(elements).map(function(k) {
+            if(elements[k].name !== undefined) {
+                return elements[k].name;
+                // special case for Edge's html collection
+            }else if(elements[k].length > 0){
+                return elements[k].item(0).name;
             }
-          }
-        }
-      });
-      var user = firebase.auth().currentUser;
-      data['member'] = user.displayName;
-      data['email'] = user.email;
-      console.log(data);
-      return data;
+        }).filter(function(item, pos, self) {
+            return self.indexOf(item) == pos && item;
+        });
+        var data = {};
+        fields.forEach(function(k){
+            data[k] = elements[k].value;
+            var str = ""; // declare empty string outside of loop to allow
+            // it to be appended to for each item in the loop
+            if(elements[k].type === "checkbox"){ // special case for Edge's html collection
+                str = str + elements[k].checked + ", "; // take the string and append 
+                // the current checked value to 
+                // the end of it, along with 
+                // a comma and a space
+                data[k] = str.slice(0, -2); // remove the last comma and space 
+                // from the  string to make the output 
+                // prettier in the spreadsheet
+            }else if(elements[k].length){
+                for(var i = 0; i < elements[k].length; i++){
+                    if(elements[k].item(i).checked){
+                        str = str + elements[k].item(i).value + ", "; // same as above
+                        data[k] = str.slice(0, -2);
+                    }
+                }
+            }
+        });
+        var user = firebase.auth().currentUser;
+        data['member'] = user.displayName;
+        data['email'] = user.email;
+        console.log(data);
+        return data;
     }
     function formOutput(message){
         $('#parts_placeholder').hide().html('<div class="alert alert-info alert-dismissable fade-alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span>'+message+'</span></div>').fadeIn(800);
     }
+    $("#qr_button").click(function(e) {
+        e.preventDefault();
+        $('#scanPart').modal('toggle');
+        let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+        var current_camera = 0;
+        scanner.addListener('scan', function (content) {
+            var out = document.getElementById('out');
+            out.textContent = content;
+        });
+        Instascan.Camera.getCameras().then(function (cameras) {
+            if (cameras.length > 0) {
+                scanner.start(cameras[0]);
+                if(cameras.length < 2){
+                    var btn = document.getElementById('change_camera');
+                    btn.style.display = 'none';
+                }
+            } else {
+                console.error('No cameras found.');
+            }
+        }).catch(function (e) {
+            console.error(e);
+        });
+
+    });
+    $("#change_camera").click(function(e) {
+        e.preventDefault();
+        let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+        Instascan.Camera.getCameras().then(function (cameras) {
+            if (cameras.length > 1) {
+                if(current_camera = 0){
+                    current_camera = 1;
+                    scanner.start(cameras[1]);
+                }
+                else{
+                    current_camera = 0;
+                    scanner.start(cameras[0]); 
+                }
+            } else {
+                console.error('No cameras found.');
+            }
+        }).catch(function (e) {
+            console.error(e);
+        });
+    });
 });
