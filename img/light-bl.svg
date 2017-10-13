@@ -2,7 +2,7 @@
     <style type="text/css"><![CDATA[
 		line
 		{
-			stroke: rgba(255,255,102,0.3);
+            stroke: rgba(255,163,26,0.4);
 			stroke-width: 1px;
 		}
     ]]></style>

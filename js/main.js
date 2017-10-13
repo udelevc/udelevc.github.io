@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
     //Correct copyright year
-    $("#foot-date2").text('\u00A9' + (new Date).getFullYear() + ' Blue Hen Racing. All rights reserved.');
+    $("#foot-date2").text('\u00A9' + (new Date).getFullYear() + ' Rooster Racing. All rights reserved.');
     
     // browser window scroll (in pixels) after which the "back to top" link is shown
     var offset = 600,
