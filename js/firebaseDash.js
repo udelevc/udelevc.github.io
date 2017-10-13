@@ -351,7 +351,6 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
         $('#scanPart').modal('toggle');
         let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-        var current_camera = 0;
         scanner.addListener('scan', function (content) {
             var out = document.getElementById('out');
             out.textContent = content;
@@ -376,14 +375,7 @@ jQuery(document).ready(function ($) {
         let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
         Instascan.Camera.getCameras().then(function (cameras) {
             if (cameras.length > 1) {
-                if(current_camera = 0){
-                    current_camera = 1;
-                    scanner.start(cameras[1]);
-                }
-                else{
-                    current_camera = 0;
-                    scanner.start(cameras[0]); 
-                }
+                scanner.start(cameras[1];  
             } else {
                 console.error('No cameras found.');
             }
