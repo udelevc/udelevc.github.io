@@ -363,6 +363,8 @@ jQuery(document).ready(function ($) {
                     btn.style.display = 'none';
                 }
             } else {
+                var out = document.getElementById('out');
+                out.textContent = "no cameras found";
                 console.error('No cameras found.');
             }
         }).catch(function (e) {
@@ -377,7 +379,7 @@ jQuery(document).ready(function ($) {
             var out = document.getElementById('out');
             out.textContent = "switched";
             if (cameras.length > 1) {
-                scanner.start(cameras[1];  
+                scanner.start(cameras[1]);  
             } else {
                 console.error('No cameras found.');
             }
