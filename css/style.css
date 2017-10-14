@@ -1332,8 +1332,6 @@ tr:hover .btn-edit{
     overflow: hidden;
 }
 #preview {
-    max-height: 500px;
-    transform: rotateY(180deg);
-    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
-    -moz-transform:rotateY(180deg); /* Firefox */
+    max-width: 500px;
+    
 }

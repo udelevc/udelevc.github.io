@@ -366,7 +366,7 @@ jQuery(document).ready(function ($) {
             } else {
                 var out = document.getElementById('out');
                 out.textContent = "no cameras found";
-                console.error('No cameras found.');
+                console.log('No cameras found.');
             }
         }).catch(function (e) {
             console.error(e);
