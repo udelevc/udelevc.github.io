@@ -356,6 +356,19 @@ jQuery(document).ready(function ($) {
         scanner.addListener('scan', function (content) {
             var out = document.getElementById('out');
             out.textContent = content;
+            var tab = document.getElementById('partsTable');
+            var n = tab.rows.length;
+            var i, s = null, tr, td;
+
+            for (i = 0; i < n; i++) {
+                tr = tab.rows[i];
+                if (tr.cells.length > 0) { // Check that cell exists before you try
+                    td = tr.cells[0];      // to access it.
+                    s += ' ' + td.innerText;
+                } // Here you could say else { return null; } if you want it to fail
+                // when requested column is out of bounds. It depends.
+            }
+            console.log(s);
         });
         Instascan.Camera.getCameras().then(function (cameras) {
             if (cameras.length > 0) {
