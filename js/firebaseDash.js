@@ -354,8 +354,9 @@ jQuery(document).ready(function ($) {
         $('#scanPart').modal('toggle');
         scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
         scanner.addListener('scan', function (content) {
+            var partNum = String(content);
             var out = document.getElementById('out');
-            out.textContent = content;
+            out.textContent = partNum;
             var tab = document.getElementById('partsTable');
             var n = tab.rows.length;
             var i, s = null, tr, td;
@@ -364,7 +365,7 @@ jQuery(document).ready(function ($) {
                 if (tr.cells.length > 0) { // Check that cell exists before you try
                     td = tr.cells[0];      // to access it.
                     s += ' ' + td.innerText;
-                    if(content.equals(td.innerText) == true){
+                    if(partNum.equals(td.innerText) == true){
                         $('#scanPart').modal('toggle');
                         td.click();
                     }
