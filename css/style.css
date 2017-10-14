@@ -1331,3 +1331,7 @@ tr:hover .btn-edit{
     background-size: cover;
     overflow: hidden;
 }
+#preview {
+    width:100%;
+    height:100%;
+}
