@@ -1,6 +1,7 @@
 jQuery(document).ready(function ($) {
     initApp();
     var scanner;
+    var current_camera;
     var options1 = {
         valueNames: [ 'part_num', 'part_name', 'part_quant', 'part_status' ],
         item: '<tr><td class="part_num"></td><td class="part_name"></td><td class="part_quant"></td><td class="part_status"><i class="fa fa-check" style="color:green" aria-hidden="true"></i></td></tr>'
@@ -359,6 +360,7 @@ jQuery(document).ready(function ($) {
         Instascan.Camera.getCameras().then(function (cameras) {
             if (cameras.length > 0) {
                 scanner.start(cameras[0]);
+                current_camera = 0;
                 if(cameras.length < 2){
                     var btn = document.getElementById('change_camera');
                     btn.style.display = 'none';
@@ -378,9 +380,16 @@ jQuery(document).ready(function ($) {
         scanner.stop();
         Instascan.Camera.getCameras().then(function (cameras) {
             if (cameras.length > 1) {
-                scanner.start(cameras[1]);  
+                if(current_camera = 0){
+                    current_camera = 1;
+                    scanner.start(cameras[1]);
+                }
+                else{
+                    current_camera = 0;
+                    scanner.start(cameras[0]); 
+                }
             } else {
-                console.error('No cameras found.');
+                console.log('No cameras found.');
             }
         }).catch(function (e) {
             console.error(e);
