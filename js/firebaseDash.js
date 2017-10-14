@@ -359,16 +359,20 @@ jQuery(document).ready(function ($) {
             var tab = document.getElementById('partsTable');
             var n = tab.rows.length;
             var i, s = null, tr, td;
-
-            for (i = 0; i < n; i++) {
+            for (i = 2; i < n; i++) {
                 tr = tab.rows[i];
                 if (tr.cells.length > 0) { // Check that cell exists before you try
                     td = tr.cells[0];      // to access it.
                     s += ' ' + td.innerText;
+                    if(content.equals(td.innerText) == true){
+                        $('#scanPart').modal('toggle');
+                        td.click();
+                    }
                 } // Here you could say else { return null; } if you want it to fail
                 // when requested column is out of bounds. It depends.
             }
             console.log(s);
+            
         });
         Instascan.Camera.getCameras().then(function (cameras) {
             if (cameras.length > 0) {
