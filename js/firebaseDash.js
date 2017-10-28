@@ -387,7 +387,7 @@ jQuery(document).ready(function ($) {
     $("#change_camera").click(function(e) {
         e.preventDefault();
         if (cameras.length > 1) {
-            if(current_camera = 0){
+            if(current_camera == 0){
                 current_camera = 1;
             }
             else{

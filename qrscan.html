@@ -11,15 +11,17 @@
         <video id="preview"></video>
         <script type="text/javascript">
             let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-            var current_camera = 0;
+            var current_camera = 1;
+            var cameras;
             scanner.addListener('scan', function (content) {
                 var out = document.getElementById('out');
                 out.textContent = content;
             });
-            Instascan.Camera.getCameras().then(function (cameras) {
+            Instascan.Camera.getCameras().then(function (fn_cameras) {
+                cameras = fn_cameras;
                 console.log(cameras);
                 if (cameras.length > 0) {
-                    scanner.start(cameras[0]);
+                    scanner.start(cameras[current_camera]);
                     if(cameras.length < 2){
                         var btn = document.getElementById('btn');
                         btn.style.display = 'none';
@@ -34,21 +36,19 @@
             });
             function changeCamera(){
                 scanner.stop().then(function () {
-                    Instascan.Camera.getCameras().then(function (cameras) {
-                        if (cameras.length > 1) {
-                            if(current_camera = 0){
-                                current_camera = 1;       
-                            }
-                            else{
-                                current_camera = 0;
-                            }
-                            scanner.start(cameras[current_camera]);
-                        } else {
-                            console.error('No cameras found.');
-                        }
-                    }).catch(function (e) {
-                        console.error(e);
+                    scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+                    scanner.addListener('scan', function (content) {
+                        var out = document.getElementById('out');
+                        out.textContent = content;
                     });
+                    console.log(cameras);
+                    if(current_camera == 0){
+                        current_camera = 1;       
+                    }
+                    else{
+                        current_camera = 0;
+                    }
+                    scanner.start(cameras[current_camera]);
                 });
             }
             function flipVideo(){
