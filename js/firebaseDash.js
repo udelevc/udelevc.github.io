@@ -344,7 +344,7 @@ jQuery(document).ready(function ($) {
     $("#qr_button").click(function(e) {
         e.preventDefault();
         $('#scanPart').modal('toggle');
-        scanner = new Instascan.Scanner({ video: document.getElementById('preview')});
+        scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
         scanner.addListener('scan', function (content) {
             var tab = document.getElementById('partsTable');
             var n = tab.rows.length;
@@ -368,7 +368,7 @@ jQuery(document).ready(function ($) {
         Instascan.Camera.getCameras().then(function (cameras) {
             if (cameras.length > 0) {
                 scanner.start(cameras[0]);
-                current_camera = true;
+                current_camera = 0;
                 if(cameras.length < 2){
                     var btn = document.getElementById('change_camera');
                     btn.style.display = 'none';
@@ -385,52 +385,26 @@ jQuery(document).ready(function ($) {
     });
     $("#change_camera").click(function(e) {
         e.preventDefault();
-        scanner.stop();
         Instascan.Camera.getCameras().then(function (cameras) {
             if (cameras.length > 1) {
-                if(current_camera){
-                    current_camera = false;
+                if(current_camera = 0){
+                    current_camera = 1;
                 }
                 else{
-                    current_camera = true;
+                    current_camera = 0;
+                    
                 }
+                scanner.start(cameras[current_camera]); 
             } else {
                 console.log('No cameras found.');
             }
         }).catch(function (e) {
             console.error(e);
         });
-        scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror:current_camera});
-        scanner.addListener('scan', function (content) {
-            var tab = document.getElementById('partsTable');
-            var n = tab.rows.length;
-            var i, s = null, tr, td;
-            for (i = 0; i < n; i++) {
-                tr = tab.rows[i];
-                if (tr.cells.length > 0) { // Check that cell exists before you try
-                    td = tr.cells[0];      // to access it.
-                    s += ' ' + td.innerText;
-                    if(content == td.innerText){
-                        scanner.stop();
-                        $('#scanPart').modal('toggle');
-                        td.click();
-                        break;
-                    }
-                } // Here you could say else { return null; } if you want it to fail
-                // when requested column is out of bounds. It depends.
-            }
-            console.log(s);
-        });
-        Instascan.Camera.getCameras().then(function (cameras) {
-            if(current_camera){
-                scanner.start(cameras[0]);
-            }
-            else{
-                scanner.start(cameras[1])
-            }
-        }).catch(function (e) {
-            console.error(e);
-        });
+    });
+    $("#flip_video").click(function(e) {
+        e.preventDefault();
+        scanner.mirror = !scanner.mirror;
     });
     $("#closeScanModal").click(function(e) {
         e.stopPropagation();

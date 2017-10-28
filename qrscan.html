@@ -6,6 +6,7 @@
     </head>
     <body>
         <button id="btn" onclick="changeCamera()">Switch Cameras</button>
+        <button id="btn" onclick="flipVideo()">Flip Video</button>
         <p id="out"></p>
         <video id="preview"></video>
         <script type="text/javascript">
@@ -16,11 +17,15 @@
                 out.textContent = content;
             });
             Instascan.Camera.getCameras().then(function (cameras) {
+                console.log(cameras[0].name);
                 if (cameras.length > 0) {
                     scanner.start(cameras[0]);
                     if(cameras.length < 2){
                         var btn = document.getElementById('btn');
                         btn.style.display = 'none';
+                    }
+                    else{
+                        console.log(cameras[1].name);
                     }
                 } else {
                     console.error('No cameras found.');
@@ -29,7 +34,6 @@
                 console.error(e);
             });
             function changeCamera(){
-                scanner.stop();
                 Instascan.Camera.getCameras().then(function (cameras) {
                     if (cameras.length > 1) {
                         if(current_camera = 0){
@@ -46,6 +50,9 @@
                 }).catch(function (e) {
                     console.error(e);
                 });
+            }
+            function flipVideo(){
+                scanner.mirror = !scanner.mirror;
             }
         </script>
     </body>
