@@ -2,24 +2,55 @@
 <html>
     <head>
         <title>Instascan</title>
-        <script type="text/javascript" src="instascan2.min.js"></script>
+        <script type="text/javascript" src="js/instascan2.min.js"></script>
     </head>
     <body>
+        <button id="btn" onclick="changeCamera()">Switch Cameras</button>
+        <button id="btn" onclick="flipVideo()">Flip Video</button>
+        <p id="out"></p>
         <video id="preview"></video>
         <script type="text/javascript">
             let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+            var current_camera = 0;
+            var cameras;
             scanner.addListener('scan', function (content) {
-                console.log(content);
+                var out = document.getElementById('out');
+                out.textContent = content;
             });
-            Instascan.Camera.getCameras().then(function (cameras) {
+            Instascan.Camera.getCameras().then(function (fn_cameras) {
+                cameras = fn_cameras;
+                console.log(cameras);
                 if (cameras.length > 0) {
-                    scanner.start(cameras[0]);
+                    scanner.start(cameras[current_camera]);
+                    if(cameras.length < 2){
+                        var btn = document.getElementById('btn');
+                        btn.style.display = 'none';
+                    }
+                    else{
+                    }
                 } else {
                     console.error('No cameras found.');
                 }
             }).catch(function (e) {
                 console.error(e);
             });
+            function changeCamera(){
+                if (cameras.length > 1) {
+                    if(current_camera == 0){
+                        current_camera = 1;
+                    }
+                    else{
+                        current_camera = 0;
+
+                    }
+                    scanner.start(cameras[current_camera]); 
+                } else {
+                    console.log('No cameras found.');
+                }
+            }
+            function flipVideo(){
+                scanner.mirror = !scanner.mirror;
+            }
         </script>
     </body>
 </html>
