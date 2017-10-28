@@ -33,16 +33,16 @@
                 console.error(e);
             });
             function changeCamera(){
+                scanner.stop();
                 Instascan.Camera.getCameras().then(function (cameras) {
                     if (cameras.length > 1) {
                         if(current_camera = 0){
-                            current_camera = 1;
-                            scanner.start(cameras[1]);
+                            current_camera = 1;       
                         }
                         else{
                             current_camera = 0;
-                            scanner.start(cameras[0]); 
                         }
+                        scanner.start(cameras[current_camera]);
                     } else {
                         console.error('No cameras found.');
                     }
