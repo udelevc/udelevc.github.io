@@ -4,6 +4,12 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: "BankGothic";
+    src: url("../fonts/bankgothic_medium_bt.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
 html body {
     margin: 0;
     padding: 0;
@@ -897,9 +903,9 @@ form div div .form-control {
 
 #name {
     color: #FFF;
-    font-family: 'Titillium Web', 'Economica', 'Oswald', 'Lato', Helvetiva, Arial, sans-serif;
+    font-family: 'BankGothic','Titillium Web', 'Economica', 'Oswald', 'Lato', Helvetiva, Arial, sans-serif;
     text-align: center;
-    font-size: 7.5em;
+    font-size: 7em;
     min-width: 200px;
     font-weight: 200;
     margin-top: 10px;
@@ -910,7 +916,7 @@ form div div .form-control {
 @media(max-width: 768px){
 
     #name {
-        font-size: calc(100% + 15vw);
+        font-size: calc(100% + 12vw);
     }
 
     .navbar-collapse {
