@@ -11,7 +11,7 @@
         <video id="preview"></video>
         <script type="text/javascript">
             let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-            var current_camera = 1;
+            var current_camera = 0;
             var cameras;
             scanner.addListener('scan', function (content) {
                 var out = document.getElementById('out');
