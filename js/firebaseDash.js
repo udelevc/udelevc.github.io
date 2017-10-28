@@ -3,6 +3,7 @@ jQuery(document).ready(function ($) {
     var scanner;
     var current_camera;
     var mirror = true;
+    var cameras = Instascan.Camera.getCameras();
     var options1 = {
         valueNames: [ 'part_num', 'part_name', 'part_quant', 'part_status' ],
         item: '<tr><td class="part_num"></td><td class="part_name"></td><td class="part_quant"></td><td class="part_status"><i class="fa fa-check" style="color:green" aria-hidden="true"></i></td></tr>'
@@ -344,7 +345,7 @@ jQuery(document).ready(function ($) {
     $("#qr_button").click(function(e) {
         e.preventDefault();
         $('#scanPart').modal('toggle');
-        scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+        scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: mirror });
         scanner.addListener('scan', function (content) {
             var tab = document.getElementById('partsTable');
             var n = tab.rows.length;
@@ -404,7 +405,8 @@ jQuery(document).ready(function ($) {
     });
     $("#flip_video").click(function(e) {
         e.preventDefault();
-        scanner.mirror = !scanner.mirror;
+        mirror = !mirror;
+        scanner.mirror = mirror;
     });
     $("#closeScanModal").click(function(e) {
         e.stopPropagation();
