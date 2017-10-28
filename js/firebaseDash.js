@@ -3,7 +3,7 @@ jQuery(document).ready(function ($) {
     var scanner;
     var current_camera;
     var mirror = true;
-    var cameras = Instascan.Camera.getCameras();
+    var cameras;
     var options1 = {
         valueNames: [ 'part_num', 'part_name', 'part_quant', 'part_status' ],
         item: '<tr><td class="part_num"></td><td class="part_name"></td><td class="part_quant"></td><td class="part_status"><i class="fa fa-check" style="color:green" aria-hidden="true"></i></td></tr>'
@@ -366,10 +366,11 @@ jQuery(document).ready(function ($) {
             }
             console.log(s);
         });
-        Instascan.Camera.getCameras().then(function (cameras) {
+        Instascan.Camera.getCameras().then(function (fn_cameras) {
+            cameras = fn_cameras;
             if (cameras.length > 0) {
-                scanner.start(cameras[0]);
                 current_camera = 0;
+                scanner.start(cameras[current_camera]);
                 if(cameras.length < 2){
                     var btn = document.getElementById('change_camera');
                     btn.style.display = 'none';
@@ -382,26 +383,21 @@ jQuery(document).ready(function ($) {
         }).catch(function (e) {
             console.error(e);
         });
-
     });
     $("#change_camera").click(function(e) {
         e.preventDefault();
-        Instascan.Camera.getCameras().then(function (cameras) {
-            if (cameras.length > 1) {
-                if(current_camera = 0){
-                    current_camera = 1;
-                }
-                else{
-                    current_camera = 0;
-                    
-                }
-                scanner.start(cameras[current_camera]); 
-            } else {
-                console.log('No cameras found.');
+        if (cameras.length > 1) {
+            if(current_camera = 0){
+                current_camera = 1;
             }
-        }).catch(function (e) {
-            console.error(e);
-        });
+            else{
+                current_camera = 0;
+
+            }
+            scanner.start(cameras[current_camera]); 
+        } else {
+            console.log('No cameras found.');
+        }
     });
     $("#flip_video").click(function(e) {
         e.preventDefault();
