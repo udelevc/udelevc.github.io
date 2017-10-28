@@ -36,19 +36,18 @@
             });
             function changeCamera(){
                 scanner.stop().then(function () {
-                    scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-                    scanner.addListener('scan', function (content) {
-                        var out = document.getElementById('out');
-                        out.textContent = content;
-                    });
-                    console.log(cameras);
-                    if(current_camera == 0){
-                        current_camera = 1;       
+                    if (cameras.length > 1) {
+                        if(current_camera == 0){
+                            current_camera = 1;
+                        }
+                        else{
+                            current_camera = 0;
+
+                        }
+                        scanner.start(cameras[current_camera]); 
+                    } else {
+                        console.log('No cameras found.');
                     }
-                    else{
-                        current_camera = 0;
-                    }
-                    scanner.start(cameras[current_camera]);
                 });
             }
             function flipVideo(){

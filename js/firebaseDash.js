@@ -386,18 +386,20 @@ jQuery(document).ready(function ($) {
     });
     $("#change_camera").click(function(e) {
         e.preventDefault();
-        if (cameras.length > 1) {
-            if(current_camera == 0){
-                current_camera = 1;
-            }
-            else{
-                current_camera = 0;
+        scanner.stop().then(function () {
+            if (cameras.length > 1) {
+                if(current_camera == 0){
+                    current_camera = 1;
+                }
+                else{
+                    current_camera = 0;
 
+                }
+                scanner.start(cameras[current_camera]); 
+            } else {
+                console.log('No cameras found.');
             }
-            scanner.start(cameras[current_camera]); 
-        } else {
-            console.log('No cameras found.');
-        }
+        });
     });
     $("#flip_video").click(function(e) {
         e.preventDefault();
