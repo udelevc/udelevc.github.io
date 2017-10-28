@@ -13,15 +13,6 @@ jQuery(document).ready(function ($) {
     };
     $(document).on("click", "#partsTable thead tr th a", function(e) {
         e.stopPropagation();
-        var tr = $('#partsTable tbody tr');
-        var newnum = 0;
-        $('td', tr).each(function(i, td){
-            if(td.cellIndex == 0 && parseInt($(td).text()) > newnum){
-                newnum  = parseInt($(td).text());
-            }
-        });
-        newnum++;
-        $("#newpart_num").val(newnum);
         $('#newpart').modal('toggle');
     });
     $('#newpart_form').validator().submit(function (e) {
