@@ -411,4 +411,10 @@ jQuery(document).ready(function ($) {
             console.error(e);
         });
     });
+    $("#closeScanModal").click(function(e) {
+        e.stopPropagation();
+        scanner.stop();
+        console.log('scanner stopped');
+        $('#scanPart').modal('toggle');
+    });
 });
